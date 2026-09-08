@@ -398,3 +398,13 @@ td:nth-child(7){
   color:#163f6d !important;
   font-weight:900 !important;
 }
+
+
+/* V12 - 신규 접수 자동 확인 */
+.refresh-stack{display:flex;flex-direction:column;align-items:flex-end;gap:7px}
+.auto-refresh-status{color:rgba(255,255,255,.72);font-size:11px;white-space:nowrap}
+.refresh-btn:disabled{opacity:.65;cursor:wait}
+.new-intake-notice{margin:18px 0 -2px;padding:14px 18px;border:1px solid #b9d8c5;background:#edf8f1;border-radius:12px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 24px rgba(27,94,56,.08)}
+.new-intake-notice strong{color:#17663a;font-size:14px}
+.new-intake-notice span{color:#50645a;font-size:13px}
+@media(max-width:700px){.refresh-stack{align-items:stretch}.auto-refresh-status{text-align:center}.new-intake-notice{align-items:flex-start;flex-direction:column;gap:4px}}

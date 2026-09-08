@@ -65,9 +65,11 @@
               <small>7일 이상 미처리</small>
             </div>
           </div>
-          <button id="refreshBtn" class="refresh-btn" type="button">↻ 새로고침</button>
+          <div class="refresh-stack"><button id="refreshBtn" class="refresh-btn" type="button">↻ 새로고침</button><small id="autoRefreshStatus" class="auto-refresh-status">30초마다 새 접수 자동 확인</small></div>
         </div>
       </section>
+
+      <div id="newIntakeNotice" class="new-intake-notice hidden" role="status" aria-live="polite"></div>
 
       <section class="summary-grid">
         <article class="summary-card tone-blue"><div class="kpi-icon">▤</div><div><span>전체 접수</span><strong id="countAll">0</strong></div></article>

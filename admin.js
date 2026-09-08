@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbzA9_n1_DKpNayQiV0hoWw3VyxRDrS34-Gwfv-RkAPySy09jcCEC3ZWoNqw34GWDdgB/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwty1ir537jUHhGDE088UtX3tkqhqXfShEa_KXEa2JU6lpX83dCI23UIUMm5GNrprCq/exec";
 const SESSION_KEY = "patentAdminKeySession";
 
 const loginView = document.getElementById("loginView");
