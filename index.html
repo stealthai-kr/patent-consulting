@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="특허·실용신안·상표·디자인 상담 및 출원 접수 포털" />
+  <title>IP 상담·출원 접수</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#" data-go-home>
+        <span class="brand-mark">IP</span>
+        <span>
+          <strong>특허상담센터</strong>
+          <small>Patent & IP Counsel</small>
+        </span>
+      </a>
+
+      <nav class="main-nav">
+        <button type="button" data-service="precheck">특허 사전검토</button>
+        <button type="button" data-service="filing">특허출원 접수</button>
+        <button type="button" data-service="brand">상표·디자인</button>
+        <button type="button" data-service="status">진행상황 조회</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="homeView" class="home-view">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">PATENT · TRADEMARK · DESIGN</p>
+          <h1>아이디어를<br><span>권리로 만드는 첫 단계</span></h1>
+          <p class="hero-text">
+            어려운 특허 서류부터 작성하지 마세요. 핵심 내용만 단계별로 입력하면
+            변리사가 검토하여 출원 가능성과 방향을 안내합니다.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn primary large" type="button" data-start="precheck">
+              무료 특허 가능성 사전검토
+            </button>
+            <button class="btn secondary large" type="button" data-start="filing">
+              특허출원 바로 접수
+            </button>
+          </div>
+
+          <div class="trust-row">
+            <span>✓ 영업일 기준 3일 이내 1차 회신</span>
+            <span>✓ 첨부자료 암호화 저장 권장</span>
+            <span>✓ 단계별 자동 임시저장</span>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <div class="panel-head">
+            <span class="mini-label">QUICK GUIDE</span>
+            <strong>어떤 도움을 원하시나요?</strong>
+          </div>
+
+          <button class="service-card" type="button" data-start="precheck">
+            <span class="service-icon">01</span>
+            <span>
+              <strong>특허 가능성 사전검토</strong>
+              <small>아이디어가 특허로 보호될 수 있는지 우선 검토</small>
+            </span>
+            <b>→</b>
+          </button>
+
+          <button class="service-card" type="button" data-start="filing">
+            <span class="service-icon">02</span>
+            <span>
+              <strong>특허출원 접수</strong>
+              <small>발명 내용을 단계별로 작성하고 자료까지 접수</small>
+            </span>
+            <b>→</b>
+          </button>
+
+          <button class="service-card" type="button" data-start="brand">
+            <span class="service-icon">03</span>
+            <span>
+              <strong>상표·디자인 상담</strong>
+              <small>상호·브랜드·제품 외관 보호 상담</small>
+            </span>
+            <b>→</b>
+          </button>
+        </aside>
+      </div>
+
+      <section class="process-section">
+        <div class="section-title">
+          <p class="eyebrow">PROCESS</p>
+          <h2>복잡한 특허 상담을 4단계로 단순하게</h2>
+        </div>
+
+        <div class="process-grid">
+          <article>
+            <span>01</span>
+            <h3>온라인 접수</h3>
+            <p>질문에 따라 발명의 핵심 내용을 입력합니다.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>변리사 검토</h3>
+            <p>신규성·진보성·권리화 방향을 중심으로 검토합니다.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>검토의견 안내</h3>
+            <p>출원 가능성과 추가로 필요한 자료를 안내합니다.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>출원 진행</h3>
+            <p>의뢰 시 명세서 작성과 특허청 출원 절차를 진행합니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="notice-section">
+        <div>
+          <p class="eyebrow">CONFIDENTIALITY</p>
+          <h2>발명 내용은 신중하게 다룹니다</h2>
+        </div>
+        <p>
+          접수된 자료는 상담 및 출원 업무 목적으로만 사용하고,
+          실제 운영 시 관리자 권한과 접근기록을 별도로 관리하는 구조를 권장합니다.
+        </p>
+      </section>
+    </section>
+
+    <section id="wizardView" class="wizard-view hidden">
+      <div class="wizard-shell">
+        <aside class="wizard-sidebar">
+          <button class="back-home" type="button" data-go-home>← 처음으로</button>
+          <p class="eyebrow">ONLINE INTAKE</p>
+          <h2 id="wizardTitle">특허 가능성 사전검토</h2>
+          <p id="wizardSubtitle">핵심 정보만 순서대로 입력해주세요.</p>
+
+          <div class="sidebar-note">
+            <strong>작성 팁</strong>
+            <p>완벽한 특허 문장으로 쓰지 않아도 됩니다. 평소 설명하듯 적어주시면 됩니다.</p>
+          </div>
+        </aside>
+
+        <div class="wizard-main">
+          <div class="wizard-top">
+            <div>
+              <span id="stepLabel">STEP 01 / 11</span>
+              <strong id="stepTitleTop">신청자 정보</strong>
+            </div>
+            <span id="saveState">임시저장됨</span>
+          </div>
+
+          <div class="progress-track">
+            <div id="progressBar"></div>
+          </div>
+
+          <form id="intakeForm" novalidate>
+            <section class="step active" data-step="0">
+              <p class="sheet-label">STEP 01</p>
+              <h3>신청자 정보</h3>
+              <p class="step-desc">검토 결과를 안내받을 기본 정보를 입력해주세요.</p>
+
+              <div class="field-grid two">
+                <label class="field">
+                  <span>성함 / 담당자명 *</span>
+                  <input name="name" type="text" placeholder="예: 김발명" required />
+                </label>
+                <label class="field">
+                  <span>회사명 · 소속</span>
+                  <input name="company" type="text" placeholder="예: 주식회사 미래기술" />
+                </label>
+              </div>
+
+              <div class="field-grid two contact-row">
+                <label class="field phone-field">
+                  <span>연락처 *</span>
+                  <div class="phone-input-group">
+                    <input id="phoneFirst" class="phone-first" type="text" inputmode="numeric" maxlength="4" value="010" placeholder="010" aria-label="연락처 첫 번째 번호" required />
+                    <span class="phone-dash">-</span>
+                    <input id="phoneMiddle" type="text" inputmode="numeric" maxlength="4" placeholder="1234" aria-label="연락처 가운데 번호" required />
+                    <span class="phone-dash">-</span>
+                    <input id="phoneLast" type="text" inputmode="numeric" maxlength="4" placeholder="5678" aria-label="연락처 마지막 번호" required />
+                  </div>
+                  <small class="field-help">휴대전화뿐 아니라 02, 031, 042 등 사무실 전화번호도 입력할 수 있습니다.</small>
+                  <input id="phoneValue" name="phone" type="hidden" />
+                </label>
+                <label class="field email-field">
+                  <span>이메일 *</span>
+                  <div class="email-input-group">
+                    <input id="emailLocal" type="text" autocomplete="email" placeholder="아이디" aria-label="이메일 아이디" required />
+                    <span class="email-at">@</span>
+                    <select id="emailDomain" aria-label="이메일 도메인">
+                      <option value="naver.com">naver.com</option>
+                      <option value="gmail.com">gmail.com</option>
+                      <option value="daum.net">daum.net</option>
+                      <option value="hanmail.net">hanmail.net</option>
+                      <option value="kakao.com">kakao.com</option>
+                      <option value="nate.com">nate.com</option>
+                      <option value="direct">직접입력</option>
+                    </select>
+                    <input id="emailDomainDirect" class="hidden" type="text" placeholder="직접입력" aria-label="이메일 도메인 직접입력" />
+                  </div>
+                  <input id="emailValue" name="email" type="hidden" />
+                </label>
+              </div>
+            </section>
+
+            <section class="step" data-step="1">
+              <p class="sheet-label">STEP 02</p>
+              <h3>발명의 명칭</h3>
+              <p class="step-desc">한 문장으로 부를 수 있는 이름이면 충분합니다.</p>
+              <label class="field">
+                <span>발명의 명칭 *</span>
+                <input name="inventionTitle" type="text" placeholder="예: 매장 혼잡도를 자동 예측하는 고객 대기 안내 시스템" required />
+              </label>
+            </section>
+
+            <section class="step" data-step="2">
+              <p class="sheet-label">STEP 03</p>
+              <h3>기술 분야</h3>
+              <p class="step-desc">어떤 제품·서비스·기술에 관한 발명인지 알려주세요.</p>
+              <label class="field">
+                <span>기술 분야 *</span>
+                <textarea name="technicalField" rows="6" placeholder="예: 음식점 주문·대기 관리, 매장 운영 자동화, AI 예측 시스템..." required></textarea>
+              </label>
+            </section>
+
+            <section class="step" data-step="3">
+              <p class="sheet-label">STEP 04</p>
+              <h3>기존 방식과 불편함</h3>
+              <p class="step-desc">기존에는 어떻게 처리했고, 무엇이 문제였나요?</p>
+              <label class="field">
+                <span>기존 방식의 문제점 *</span>
+                <textarea name="existingProblem" rows="7" placeholder="예: 매장별로 수기로 대기 인원을 관리해 정확도가 낮고..." required></textarea>
+              </label>
+            </section>
+
+            <section class="step" data-step="4">
+              <p class="sheet-label">STEP 05</p>
+              <h3>해결하고 싶은 과제</h3>
+              <p class="step-desc">이 발명으로 정확히 무엇을 해결하려고 하나요?</p>
+              <label class="field">
+                <span>해결 과제 *</span>
+                <textarea name="objective" rows="7" placeholder="예: 별도 수기 입력 없이 실시간으로 혼잡도를 계산하고..." required></textarea>
+              </label>
+            </section>
+
+            <section class="step" data-step="5">
+              <p class="sheet-label">STEP 06</p>
+              <h3>핵심 구성 · 구현 방법</h3>
+              <p class="step-desc">실제로 어떤 구성요소가 있고 어떻게 동작하는지 설명해주세요.</p>
+              <label class="field">
+                <span>구성 및 구현 방법 *</span>
+                <textarea name="implementation" rows="8" placeholder="예: (1) 주문정보 수집부, (2) 시간대별 예측부, (3) 고객 안내부가 연결되어..." required></textarea>
+              </label>
+            </section>
+
+            <section class="step" data-step="6">
+              <p class="sheet-label">STEP 07 · 선택</p>
+              <h3>도면 · 그림 설명</h3>
+              <p class="step-desc">
+                발명의 구조를 이해하는 데 도움이 되는 도면, 손그림, 화면 캡처, 제품·시제품 사진 또는 PDF 자료를 첨부할 수 있습니다.
+              </p>
+              <label class="field">
+                <span>도면 설명</span>
+                <textarea name="drawingDescription" rows="5" placeholder="예: 왼쪽은 주문 수집 화면, 오른쪽은 혼잡도 안내 화면..."></textarea>
+              </label>
+              <div class="upload-placeholder">
+                <span>＋</span>
+                <strong>도면 · 이미지 · PDF 첨부</strong>
+                <small class="upload-main-help">첨부 가능: JPG · JPEG · PNG 이미지, PDF 문서 / 최대 3개 / 파일당 5MB 이하 권장</small>
+                <div class="upload-help-box">
+                  <p><b>첨부하면 좋은 자료</b> — 특허 도면, 손으로 그린 스케치, 제품·시제품 사진, 앱·웹 화면 캡처, 작동 설명 PDF 등</p>
+                  <p><b>첨부하지 않는 파일</b> — 한글(HWP), Word, Excel, PowerPoint, CAD·3D 원본, ZIP 등 압축파일 및 파일당 5MB를 초과하는 자료</p>
+                  <p class="upload-email-notice">용량을 초과하거나 위 형식 외의 자료는 <b><span id="supportEmailText">회사 상담 이메일 주소</span>로 별도 전송</b>해 주세요. 이메일 제목에는 신청자명과 발명의 명칭을 함께 적어주세요.</p>
+                </div>
+                <input id="fileInput" name="attachments" type="file" multiple accept=".png,.jpg,.jpeg,.pdf" />
+                <button id="fileButton" class="btn soft" type="button">파일 선택</button>
+                <div id="fileList"></div>
+              </div>
+            </section>
+
+            <section class="step" data-step="7">
+              <p class="sheet-label">STEP 08 · 선택</p>
+              <h3>실험 결과 · 수치</h3>
+              <p class="step-desc">테스트했거나 계산해 본 성능·효율 수치가 있다면 적어주세요.</p>
+              <label class="field">
+                <span>실험·성능 데이터</span>
+                <textarea name="results" rows="7" placeholder="예: 평균 대기시간 예측오차가 기존 방식 대비 약 30% 감소..."></textarea>
+              </label>
+            </section>
+
+            <section class="step" data-step="8">
+              <p class="sheet-label">STEP 09</p>
+              <h3>발명의 효과</h3>
+              <p class="step-desc">이 발명 덕분에 무엇이 더 좋아지나요?</p>
+              <label class="field">
+                <span>기대 효과 *</span>
+                <textarea name="effects" rows="7" placeholder="예: 고객 대기시간 감소, 매장 회전율 개선, 관리자 업무 감소..." required></textarea>
+              </label>
+            </section>
+
+            <section class="step" data-step="9">
+              <p class="sheet-label important">STEP 10 · 가장 중요</p>
+              <h3>기존 기술과 가장 다른 점</h3>
+              <p class="step-desc">특허 검토에서 매우 중요한 부분입니다. 차별점을 가능한 구체적으로 적어주세요.</p>
+              <label class="field">
+                <span>핵심 차별점 *</span>
+                <textarea name="differentiation" rows="8" placeholder="예: 단순 대기번호 발급이 아니라, 주문량·시간대·조리시간을 함께 분석해..." required></textarea>
+              </label>
+            </section>
+
+            <section class="step" data-step="10">
+              <p class="sheet-label">STEP 11</p>
+              <h3>공개 여부 · 제출 동의</h3>
+              <p class="step-desc">발표·전시·판매·SNS 등으로 이미 공개한 적이 있는지 알려주세요.</p>
+
+              <fieldset class="choice-field">
+                <legend>공개한 적이 있습니까? *</legend>
+                <label><input type="radio" name="disclosed" value="없음" required /> <span>없음</span></label>
+                <label><input type="radio" name="disclosed" value="있음" required /> <span>있음</span></label>
+              </fieldset>
+
+              <label class="field">
+                <span>공개 내용 또는 참고사항</span>
+                <textarea name="disclosureNote" rows="4" placeholder="예: 2026년 8월 전시회에서 시제품을 공개함"></textarea>
+              </label>
+
+              <div class="consent-box">
+                <label>
+                  <input type="checkbox" name="privacyConsent" required />
+                  <span>개인정보 수집·이용 및 상담업무 처리를 위한 자료 이용에 동의합니다. *</span>
+                </label>
+                <label>
+                  <input type="checkbox" name="truthConsent" required />
+                  <span>입력한 내용이 상담을 위한 기초자료로 활용됨을 확인합니다. *</span>
+                </label>
+              </div>
+            </section>
+
+            <section class="step review-step" data-step="11">
+              <p class="sheet-label">REVIEW</p>
+              <h3>접수내용 확인</h3>
+              <p class="step-desc">제출 전에 작성한 내용을 확인해주세요.</p>
+              <div id="reviewContent" class="review-content"></div>
+            </section>
+
+            <div class="wizard-actions">
+              <button id="prevBtn" class="btn text" type="button">← 이전</button>
+              <div class="action-right">
+                <button id="saveBtn" class="btn soft" type="button">임시저장</button>
+                <button id="nextBtn" class="btn primary" type="button">다음 →</button>
+                <button id="submitBtn" class="btn primary hidden" type="submit">접수하기</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="successView" class="success-view hidden">
+      <div class="success-card">
+        <span class="success-icon">✓</span>
+        <p class="eyebrow">SUBMISSION COMPLETE</p>
+        <h2>접수가 완료되었습니다.</h2>
+        <p>아래 접수번호를 보관해주세요. 실제 운영 버전에서는 이 번호로 진행상황을 조회하도록 연결할 수 있습니다.</p>
+        <div class="receipt-no" id="receiptNo">IP-00000000</div>
+        <button class="btn primary" type="button" data-go-home>처음 화면으로</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <strong>특허상담센터</strong>
+      <span>※ 본 데모는 고객 접수용 UI 시안입니다. 실제 배포 시 사업자·변리사 정보, 개인정보처리방침, 이용약관, 보안정책을 확정해야 합니다.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
