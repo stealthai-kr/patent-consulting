@@ -1,5 +1,628 @@
-window.additionalPages={
- "tm-process":{g:"procedure",title:"상표 출원절차",lead:"브랜드 후보를 정하는 단계부터 등록 후 갱신과 사용관리까지, 일반적인 상표출원 과정을 설명합니다.",s:[["STEP 01 · 상표와 사업범위 정리",["출원하려는 문자, 로고, 영문표기와 실제 사용할 상품·서비스를 정리합니다. 같은 브랜드를 여러 업종에 사용할 예정이면 현재 사업과 향후 확장계획을 함께 알려 주세요.","상호등기나 도메인 등록과 상표권 등록은 서로 다른 제도이므로 상호를 사용 중이라는 사실만으로 상표권이 자동 발생하는 것은 아닙니다."]],["STEP 02 · 선행상표 검색",["동일한 표장뿐 아니라 호칭, 외관 또는 의미가 유사한 선행상표를 검색합니다. 비슷한 상표가 발견되면 지정상품의 유사 여부와 권리상태를 확인하고 출원 위험을 설명합니다.","검색 결과에 따라 새로운 명칭을 검토하거나 문자와 로고를 나누어 출원하는 전략을 세울 수 있습니다."]],["STEP 03 · 상품류와 지정상품 확정",["상표는 분류 번호만 정하는 것이 아니라 그 안에서 보호받을 구체적인 상품·서비스 명칭을 선택해야 합니다. 현재 판매 품목을 빠뜨리지 않으면서 향후 사업계획에 필요한 범위를 합리적으로 포함합니다."]],["STEP 04 · 출원서 제출",["출원인 정보, 상표 견본과 지정상품을 확정해 특허청에 제출합니다. 제출 후 출원번호가 부여되며 출시 일정이 있다면 출원 시점을 미루지 않는 것이 좋습니다."]],["STEP 05 · 특허청 심사",["심사관은 식별력, 선행상표와의 유사 여부와 지정상품 표현 등을 심사합니다. 의견제출통지가 나오면 거절이유를 분석해 의견서 제출, 지정상품 보정 또는 분할출원 등 가능한 대응방안을 협의합니다."]],["STEP 06 · 출원공고와 이의절차",["심사를 통과하면 출원공고되어 제3자가 이의를 제기할 수 있는 절차가 진행됩니다. 이의가 제기되면 양 상표와 상품의 유사 여부, 실제 거래실정과 증거를 검토해 답변합니다."]],["STEP 07 · 등록과 사용관리",["등록결정 후 기한 내 등록료를 납부하면 상표권이 발생합니다. 등록 뒤에는 갱신기한을 관리하고 등록상표를 지정상품에 실제 사용한 광고·포장·거래자료를 날짜별로 보관하는 것이 좋습니다."]]]},
- "design-process":{g:"procedure",title:"디자인 출원절차",lead:"제품의 외관을 어떤 도면으로, 어느 범위까지 보호할지 결정하는 과정을 단계별로 안내합니다.",s:[["STEP 01 · 제품과 공개일정 확인",["제품의 용도, 전체 외관과 가장 독창적인 부분을 확인합니다. 출시·판매·전시·크라우드펀딩·SNS 게시 전 출원하는 것이 안전하므로 예상 공개일을 먼저 확인합니다."]],["STEP 02 · 출원형태 결정",["제품 전체를 보호할지 특징적인 부분만 보호할지, 색채를 포함할지, 복수의 변형모델을 함께 준비할지 검토합니다. 화면이나 아이콘은 실제 표시되는 물품·기능과 표현방법을 확인합니다."]],["STEP 03 · 선행디자인 조사",["동종 또는 유사한 물품의 등록·공개 디자인과 시장제품을 조사합니다. 전체적인 심미감과 주요 특징을 비교해 등록 가능성과 도면에서 강조할 부분을 정합니다."]],["STEP 04 · 도면·사진 작성",["정면·배면·좌측면·우측면·평면·저면·사시도 등 필요한 도면이 서로 일치하도록 준비합니다. 부분디자인이라면 보호받을 부분과 제외할 부분의 경계를 명확히 표시합니다."]],["STEP 05 · 출원과 심사",["출원서, 도면과 필요한 설명을 제출하면 특허청이 방식 및 등록요건을 심사합니다. 거절이유가 통지되면 선행디자인과의 차이와 보정 가능 범위를 분석해 대응합니다."]],["STEP 06 · 등록과 제품군 관리",["등록결정 후 등록료를 납부하면 디자인권이 발생합니다. 후속 모델이 출시되면 기존 권리로 보호되는지 또는 관련디자인·별도 출원이 필요한지 공개 전에 검토합니다."]]]},
- "global-process":{g:"procedure",title:"해외출원 절차",lead:"국내출원 이후의 의사결정 기간을 놓치지 않도록 국가선정, 번역, 현지심사와 등록관리를 순서대로 안내합니다.",s:[["STEP 01 · 해외사업 일정 확인",["수출·현지생산·투자·전시 국가와 경쟁사 활동 국가를 확인합니다. 국내출원일, 기술 공개일과 국가별 출원 필요시점을 한 일정표에 정리합니다."]],["STEP 02 · 대상국가와 예산 설정",["시장 규모만이 아니라 제조·수입 경로, 침해 발견 가능성, 권리행사 실효성과 유지비용을 기준으로 필수국가와 후보국가를 나눕니다."]],["STEP 03 · 출원경로 선택",["특허는 개별국 직접출원과 PCT 국제출원, 상표는 개별국과 마드리드 제도, 디자인은 개별국과 헤이그 제도를 비교합니다. 국제출원은 여러 국가 절차를 효율화하는 수단이지만 각국 등록이 자동으로 보장되는 것은 아닙니다."]],["STEP 04 · 원문·번역문 준비",["국내 기초출원의 권리범위와 해외에서 실제 보호할 내용을 확인합니다. 번역 과정에서 기술용어와 청구항 의미가 바뀌지 않도록 발명자 검토와 품질점검을 진행합니다."]],["STEP 05 · 국제단계 또는 현지출원",["선택한 경로에 따라 국제출원 또는 각국 특허청 출원을 진행하고 접수번호·기한을 안내합니다. PCT를 이용한 경우 국제조사 결과를 검토해 국내단계 진입국가와 청구항 수정 방향을 결정합니다."]],["STEP 06 · 각국 심사 대응",["현지대리인이 전달한 거절이유를 국내 사건과 함께 분석합니다. 국가마다 허용되는 보정과 심사기준이 다르므로 대응 선택지, 비용과 권리범위 영향을 설명한 뒤 진행합니다."]],["STEP 07 · 등록·연차 관리",["각국 등록료와 연차료·갱신료 기한을 관리합니다. 제품 판매와 사업국가가 달라지면 포트폴리오를 정기적으로 점검해 유지·포기·추가출원을 결정합니다."]]]}
-};
+// 고객 접수 화면(script.js)과 반드시 같은 Apps Script 웹앱 주소를 사용합니다.
+const API_URL = "https://script.google.com/macros/s/AKfycbzA9_n1_DKpNayQiV0hoWw3VyxRDrS34-Gwfv-RkAPySy09jcCEC3ZWoNqw34GWDdgB/exec";
+const SESSION_KEY = "patentAdminKeySession";
+
+const loginView = document.getElementById("loginView");
+const dashboardView = document.getElementById("dashboardView");
+const adminKeyInput = document.getElementById("adminKeyInput");
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const loginMessage = document.getElementById("loginMessage");
+const refreshBtn = document.getElementById("refreshBtn");
+
+const tbody = document.getElementById("applicationTableBody");
+const listCount = document.getElementById("listCount");
+const activeFilterText = document.getElementById("activeFilterText");
+
+const dateFrom = document.getElementById("dateFrom");
+const dateTo = document.getElementById("dateTo");
+const serviceFilter = document.getElementById("serviceFilter");
+const statusFilter = document.getElementById("statusFilter");
+const managerFilter = document.getElementById("managerFilter");
+const nameFilter = document.getElementById("nameFilter");
+const companyFilter = document.getElementById("companyFilter");
+const phoneFirstFilter = document.getElementById("phoneFirstFilter");
+const phoneMiddleFilter = document.getElementById("phoneMiddleFilter");
+const phoneLastFilter = document.getElementById("phoneLastFilter");
+const emailFilter = document.getElementById("emailFilter");
+const titleFilter = document.getElementById("titleFilter");
+const technicalFieldFilter = document.getElementById("technicalFieldFilter");
+const disclosedFilter = document.getElementById("disclosedFilter");
+const keywordFilter = document.getElementById("keywordFilter");
+const sortSelect = document.getElementById("sortSelect");
+
+const searchBtn = document.getElementById("searchBtn");
+const resetSearchBtn = document.getElementById("resetSearchBtn");
+const clearQuickBtn = document.getElementById("clearQuickBtn");
+const toggleSearchBtn = document.getElementById("toggleSearchBtn");
+const advancedSearchBody = document.getElementById("advancedSearchBody");
+
+const modal = document.getElementById("detailModal");
+const modalCloseBtn = document.getElementById("modalCloseBtn");
+const basicDetail = document.getElementById("basicDetail");
+const inventionDetail = document.getElementById("inventionDetail");
+const detailReceiptNo = document.getElementById("detailReceiptNo");
+const detailStatusBadge = document.getElementById("detailStatusBadge");
+const editStatus = document.getElementById("editStatus");
+const editManagerSelect = document.getElementById("editManagerSelect");
+const editManagerCustom = document.getElementById("editManagerCustom");
+const customManagerField = document.getElementById("customManagerField");
+const editMemo = document.getElementById("editMemo");
+const saveDetailBtn = document.getElementById("saveDetailBtn");
+const saveDetailMessage = document.getElementById("saveDetailMessage");
+const historyList = document.getElementById("historyList");
+
+let adminKey = sessionStorage.getItem(SESSION_KEY) || "";
+let applications = [];
+let currentReceiptNo = "";
+
+const MANAGER_OPTIONS = [];
+
+function showDashboard() {
+  loginView.classList.add("hidden");
+  dashboardView.classList.remove("hidden");
+  logoutBtn.classList.remove("hidden");
+}
+
+function showLogin() {
+  dashboardView.classList.add("hidden");
+  loginView.classList.remove("hidden");
+  logoutBtn.classList.add("hidden");
+}
+
+async function apiPost(payload) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 15000);
+  let response;
+
+  try {
+    response = await fetch(API_URL, {
+      method: "POST",
+      redirect: "follow",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload),
+      signal: controller.signal
+    });
+  } catch (error) {
+    if (error.name === "AbortError") {
+      throw new Error("서버 응답이 지연되고 있습니다. Apps Script 배포 상태를 확인해 주세요.");
+    }
+    throw new Error("관리자 서버에 연결할 수 없습니다. Apps Script 웹앱 주소와 배포 권한을 확인해 주세요.");
+  } finally {
+    clearTimeout(timeoutId);
+  }
+
+  if (!response.ok) throw new Error(`서버 응답 오류 (${response.status})`);
+
+  const result = await response.json();
+  if (!result.ok) throw new Error(result.message || "요청 처리 실패");
+  return result;
+}
+
+async function login() {
+  const key = adminKeyInput.value.trim();
+  if (!key) {
+    loginMessage.textContent = "관리자 비밀번호를 입력해주세요.";
+    return;
+  }
+
+  loginBtn.disabled = true;
+  loginBtn.textContent = "확인 중...";
+  loginMessage.textContent = "";
+
+  try {
+    await apiPost({ action: "adminList", adminKey: key });
+    adminKey = key;
+    sessionStorage.setItem(SESSION_KEY, key);
+    showDashboard();
+    await loadApplications();
+  } catch (err) {
+    loginMessage.textContent = err.message || String(err);
+  } finally {
+    loginBtn.disabled = false;
+    loginBtn.textContent = "관리자 로그인";
+  }
+}
+
+async function loadApplications() {
+  tbody.innerHTML = `<tr><td colspan="8" class="empty">접수 내역을 불러오는 중입니다.</td></tr>`;
+
+  try {
+    const result = await apiPost({
+      action: "adminList",
+      adminKey
+    });
+
+    applications = result.items || [];
+    updateSummary(result.summary || {});
+    updateOperationalAlerts();
+    refreshManagerFilter();
+    renderTable();
+  } catch (err) {
+    tbody.innerHTML = `<tr><td colspan="8" class="empty">${escapeHtml(err.message || String(err))}</td></tr>`;
+  }
+}
+
+function parseSubmittedDate(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return null;
+  const d = new Date(raw.replace(/\./g, "-"));
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
+function getElapsedDays(item) {
+  const d = parseSubmittedDate(item.submittedAt);
+  if (!d) return 0;
+  const now = new Date();
+  d.setHours(0,0,0,0);
+  now.setHours(0,0,0,0);
+  return Math.max(0, Math.floor((now - d) / 86400000));
+}
+
+function updateOperationalAlerts() {
+  const unassigned = applications.filter(item => !String(item.manager || "").trim()).length;
+  const stale = applications.filter(item => item.status !== "출원완료" && getElapsedDays(item) >= 7).length;
+
+  const unassignedEl = document.getElementById("countUnassigned");
+  const staleEl = document.getElementById("countStale");
+
+  if (unassignedEl) unassignedEl.textContent = `${unassigned}건`;
+  if (staleEl) staleEl.textContent = `${stale}건`;
+}
+
+function updateSummary(summary) {
+  document.getElementById("countAll").textContent = summary.all || 0;
+  document.getElementById("countNew").textContent = summary["신규접수"] || 0;
+  document.getElementById("countReview").textContent = summary["검토중"] || 0;
+  document.getElementById("countRequest").textContent = summary["추가자료 요청"] || 0;
+  document.getElementById("countFiling").textContent = summary["출원진행"] || 0;
+  document.getElementById("countDone").textContent = summary["출원완료"] || 0;
+}
+
+function refreshManagerFilter() {
+  const current = managerFilter.value;
+  const names = [...new Set(
+    applications
+      .map(x => String(x.manager || "").trim())
+      .filter(Boolean)
+  )].sort((a,b) => a.localeCompare(b, "ko"));
+
+  managerFilter.innerHTML = `<option value="">전체 담당자</option>` +
+    names.map(name => `<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`).join("");
+
+  if (names.includes(current)) managerFilter.value = current;
+}
+
+function normalize(value) {
+  return String(value || "").trim().toLowerCase();
+}
+
+function normalizePhone(value) {
+  return String(value || "").replace(/\D/g, "");
+}
+
+function dateOnly(value) {
+  return String(value || "").slice(0,10);
+}
+
+function getFilteredApplications() {
+  const f = {
+    dateFrom: dateFrom.value,
+    dateTo: dateTo.value,
+    service: serviceFilter.value,
+    status: statusFilter.value,
+    manager: managerFilter.value,
+    name: normalize(nameFilter.value),
+    company: normalize(companyFilter.value),
+    phone: [phoneFirstFilter.value, phoneMiddleFilter.value, phoneLastFilter.value]
+      .map(v => normalizePhone(v))
+      .filter(Boolean)
+      .join(""),
+    email: normalize(emailFilter.value),
+    title: normalize(titleFilter.value),
+    technical: normalize(technicalFieldFilter.value),
+    disclosed: disclosedFilter.value,
+    keyword: normalize(keywordFilter.value)
+  };
+
+  let rows = applications.filter(item => {
+    const submittedDate = dateOnly(item.submittedAt);
+
+    if (f.dateFrom && submittedDate < f.dateFrom) return false;
+    if (f.dateTo && submittedDate > f.dateTo) return false;
+    if (f.service && item.serviceType !== f.service) return false;
+    if (f.status && item.status !== f.status) return false;
+    if (f.manager && item.manager !== f.manager) return false;
+    if (f.name && !normalize(item.name).includes(f.name)) return false;
+    if (f.company && !normalize(item.company).includes(f.company)) return false;
+    if (f.phone && !normalizePhone(item.phone).includes(f.phone)) return false;
+    if (f.email && !normalize(item.email).includes(f.email)) return false;
+    if (f.title && !normalize(item.inventionTitle).includes(f.title)) return false;
+    if (f.technical && !normalize(item.technicalField).includes(f.technical)) return false;
+    if (f.disclosed && item.disclosed !== f.disclosed) return false;
+
+    if (f.keyword) {
+      const haystack = [
+        item.receiptNo,
+        item.name,
+        item.company,
+        item.phone,
+        item.email,
+        item.inventionTitle,
+        item.technicalField,
+        item.existingProblem,
+        item.objective,
+        item.implementation,
+        item.effects,
+        item.differentiation,
+        item.disclosureNote,
+        item.manager,
+        item.memo,
+        item.serviceType,
+        item.status
+      ].map(normalize).join(" ");
+
+      if (!haystack.includes(f.keyword)) return false;
+    }
+
+    return true;
+  });
+
+  const sort = sortSelect.value;
+
+  rows.sort((a,b) => {
+    if (sort === "oldest") return String(a.submittedAt).localeCompare(String(b.submittedAt));
+    if (sort === "updated") return String(b.updatedAt || "").localeCompare(String(a.updatedAt || ""));
+    if (sort === "name") return String(a.name || "").localeCompare(String(b.name || ""), "ko");
+    return String(b.submittedAt).localeCompare(String(a.submittedAt));
+  });
+
+  return rows;
+}
+
+function buildFilterSummary() {
+  const parts = [];
+
+  if (dateFrom.value || dateTo.value) parts.push(`기간 ${dateFrom.value || "처음"} ~ ${dateTo.value || "현재"}`);
+  if (serviceFilter.value) parts.push(`서비스: ${serviceFilter.value}`);
+  if (statusFilter.value) parts.push(`상태: ${statusFilter.value}`);
+  if (managerFilter.value) parts.push(`담당자: ${managerFilter.value}`);
+  if (nameFilter.value.trim()) parts.push(`신청자: ${nameFilter.value.trim()}`);
+  if (companyFilter.value.trim()) parts.push(`회사: ${companyFilter.value.trim()}`);
+  const phoneFirstText = phoneFirstFilter.value.trim();
+  const phoneMiddleText = phoneMiddleFilter.value.trim();
+  const phoneLastText = phoneLastFilter.value.trim();
+  if (!(phoneFirstText === "010" && !phoneMiddleText && !phoneLastText)) {
+    const phoneParts = [phoneFirstText, phoneMiddleText, phoneLastText].filter(Boolean);
+    if (phoneParts.length) parts.push(`연락처: ${phoneParts.join("-")}`);
+  }
+  if (emailFilter.value.trim()) parts.push(`이메일: ${emailFilter.value.trim()}`);
+  if (titleFilter.value.trim()) parts.push(`발명명칭: ${titleFilter.value.trim()}`);
+  if (technicalFieldFilter.value.trim()) parts.push(`기술분야: ${technicalFieldFilter.value.trim()}`);
+  if (disclosedFilter.value) parts.push(`공개: ${disclosedFilter.value}`);
+  if (keywordFilter.value.trim()) parts.push(`키워드: ${keywordFilter.value.trim()}`);
+
+  return parts.length ? parts.join(" · ") : "전체 접수건을 표시합니다.";
+}
+
+function renderTable() {
+  const filtered = getFilteredApplications();
+
+  listCount.textContent = `${filtered.length}건`;
+  activeFilterText.textContent = buildFilterSummary();
+
+  if (!filtered.length) {
+    tbody.innerHTML = `<tr><td colspan="8" class="empty">조건에 맞는 접수 내역이 없습니다.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(item => `
+    <tr data-receipt="${escapeHtml(item.receiptNo)}" title="클릭하여 접수 상세보기">
+      <td><button type="button" class="receipt-link" tabindex="-1">${escapeHtml(item.receiptNo)}</button></td>
+      <td>${escapeHtml((item.submittedAt || "").slice(0,10))}</td>
+      <td>${escapeHtml(item.name || "")}</td>
+      <td>${escapeHtml(item.company || "")}</td>
+      <td class="title-cell">${escapeHtml(item.inventionTitle || "")}</td>
+      <td><span class="status-chip" data-status="${escapeHtml(item.status || "")}">${escapeHtml(item.status || "")}</span></td>
+      <td>${escapeHtml(item.manager || "미지정")}</td>
+      <td><button type="button" class="manage-btn" tabindex="-1">상세보기</button></td>
+    </tr>
+  `).join("");
+
+  tbody.querySelectorAll("tr[data-receipt]").forEach(tr => {
+    tr.addEventListener("click", () => openDetail(tr.dataset.receipt));
+  });
+}
+
+function resetSearch() {
+  [
+    dateFrom,dateTo,serviceFilter,statusFilter,managerFilter,nameFilter,companyFilter,
+    phoneFirstFilter,phoneMiddleFilter,phoneLastFilter,emailFilter,titleFilter,technicalFieldFilter,disclosedFilter,keywordFilter
+  ].forEach(el => {
+    if (el.tagName === "SELECT") el.selectedIndex = 0;
+    else el.value = "";
+  });
+
+  if (phoneFirstFilter) phoneFirstFilter.value = "010";
+  sortSelect.value = "newest";
+  renderTable();
+}
+
+async function openDetail(receiptNo) {
+  currentReceiptNo = receiptNo;
+  modal.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+  detailReceiptNo.textContent = receiptNo;
+  basicDetail.innerHTML = `<div class="empty">불러오는 중...</div>`;
+  inventionDetail.innerHTML = "";
+  historyList.innerHTML = "";
+  saveDetailMessage.textContent = "";
+
+  try {
+    const result = await apiPost({
+      action: "adminDetail",
+      adminKey,
+      receiptNo
+    });
+
+    const d = result.item;
+
+    detailStatusBadge.textContent = d.status || "신규접수";
+    detailStatusBadge.dataset.status = d.status || "신규접수";
+    editStatus.value = d.status || "신규접수";
+    setManagerValue(d.manager || "");
+    editMemo.value = d.memo || "";
+
+    basicDetail.innerHTML = [
+      ["접수일시", d.submittedAt],
+      ["서비스", d.serviceType],
+      ["신청자", d.name],
+      ["회사/소속", d.company],
+      ["연락처", formatPhone(d.phone)],
+      ["이메일", d.email]
+    ].map(([label,value]) => detailItem(label,value)).join("");
+
+    const inventionItems = [
+      {label:"발명의 명칭",value:d.inventionTitle,wide:true,featured:true},
+      {label:"기술 분야",value:d.technicalField},
+      {label:"기존 방식의 문제점",value:d.existingProblem},
+      {label:"해결 과제",value:d.objective},
+      {label:"구성 및 구현 방법",value:d.implementation},
+      {label:"도면 설명",value:d.drawingDescription},
+      {label:"실험/성능 데이터",value:d.results},
+      {label:"기대 효과",value:d.effects},
+      {label:"핵심 차별점",value:d.differentiation,wide:true,featured:true},
+      {label:"공개 여부",value:d.disclosed},
+      {label:"공개 내용/참고사항",value:d.disclosureNote,wide:true},
+      {label:"첨부파일",value:d.attachmentInfo,attachments:d.attachments || [],wide:true}
+    ];
+
+    inventionDetail.innerHTML = inventionItems.map(inventionItem).join("");
+
+    const history = result.history || [];
+    historyList.innerHTML = history.length
+      ? history.map(h => `
+          <div class="history-item">
+            <strong>${escapeHtml(h.oldStatus || "—")} → ${escapeHtml(h.newStatus || "")}</strong>
+            <small>${escapeHtml(h.time || "")} · ${escapeHtml(h.actor || "")} · ${escapeHtml(h.note || "")}</small>
+          </div>
+        `).join("")
+      : `<div class="empty">진행이력이 없습니다.</div>`;
+  } catch (err) {
+    basicDetail.innerHTML = `<div class="empty">${escapeHtml(err.message || String(err))}</div>`;
+  }
+}
+
+function detailItem(label,value) {
+  return `<div class="detail-item"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value || "—")}</strong></div>`;
+}
+
+function inventionItem(item) {
+  const classes = ["detail-item",item.wide?"wide":"",item.featured?"featured":""].filter(Boolean).join(" ");
+
+  if (item.label === "첨부파일") {
+    const files = Array.isArray(item.attachments) ? item.attachments : [];
+    return `
+      <div class="${classes}">
+        <span>${escapeHtml(item.label)}</span>
+        ${renderAttachments(files, item.value)}
+      </div>
+    `;
+  }
+
+  return `<div class="${classes}"><span>${escapeHtml(item.label)}</span><p>${escapeHtml(item.value || "—")}</p></div>`;
+}
+
+function renderAttachments(files, fallbackValue) {
+  if (files.length) {
+    return `
+      <div class="attachment-list">
+        ${files.map(file => {
+          const name = escapeHtml(file.name || "첨부파일");
+          const url = safeDriveUrl(file.url || "");
+          const size = Number(file.size || 0);
+          const sizeText = size ? ` · ${(size / 1024 / 1024).toFixed(1)}MB` : "";
+
+          if (!url) {
+            return `<div class="attachment-row"><span class="attachment-name">${name}${sizeText}</span></div>`;
+          }
+
+          return `
+            <div class="attachment-row">
+              <div>
+                <strong class="attachment-name">${name}</strong>
+                <small>${escapeHtml(file.mimeType || "")}${sizeText}</small>
+              </div>
+              <a class="attachment-open-btn" href="${url}" target="_blank" rel="noopener noreferrer">Drive에서 열기 ↗</a>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    `;
+  }
+
+  return `<p>${escapeHtml(fallbackValue || "첨부파일 없음")}</p>`;
+}
+
+function safeDriveUrl(value) {
+  const url = String(value || "").trim();
+  return /^https:\/\/(drive|docs)\.google\.com\//i.test(url) ? escapeHtml(url) : "";
+}
+
+function populateManagerOptions() {
+  MANAGER_OPTIONS.forEach(name => {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    editManagerSelect.insertBefore(option,editManagerSelect.querySelector('option[value="__custom__"]'));
+  });
+}
+
+function setManagerValue(manager) {
+  const normalized = String(manager || "").trim();
+
+  if (!normalized) {
+    editManagerSelect.value = "";
+    editManagerCustom.value = "";
+    customManagerField.classList.add("hidden");
+    return;
+  }
+
+  const hasOption = [...editManagerSelect.options].some(opt => opt.value === normalized);
+
+  if (hasOption) {
+    editManagerSelect.value = normalized;
+    editManagerCustom.value = "";
+    customManagerField.classList.add("hidden");
+  } else {
+    editManagerSelect.value = "__custom__";
+    editManagerCustom.value = normalized;
+    customManagerField.classList.remove("hidden");
+  }
+}
+
+function getManagerValue() {
+  return editManagerSelect.value === "__custom__"
+    ? editManagerCustom.value.trim()
+    : editManagerSelect.value.trim();
+}
+
+async function saveDetail() {
+  if (!currentReceiptNo) return;
+
+  saveDetailBtn.disabled = true;
+  saveDetailBtn.textContent = "저장 중...";
+  saveDetailMessage.textContent = "";
+
+  try {
+    await apiPost({
+      action: "adminUpdate",
+      adminKey,
+      receiptNo: currentReceiptNo,
+      newStatus: editStatus.value,
+      manager: getManagerValue(),
+      memo: editMemo.value.trim()
+    });
+
+    saveDetailMessage.textContent = "저장되었습니다.";
+    await loadApplications();
+    await openDetail(currentReceiptNo);
+  } catch (err) {
+    saveDetailMessage.textContent = err.message || String(err);
+  } finally {
+    saveDetailBtn.disabled = false;
+    saveDetailBtn.textContent = "변경사항 저장";
+  }
+}
+
+function closeModal() {
+  modal.classList.add("hidden");
+  currentReceiptNo = "";
+  document.body.style.overflow = "";
+}
+
+function formatPhone(value) {
+  const digits = String(value || "").replace(/\D/g, "");
+  if (!digits) return "";
+  if (digits.startsWith("02")) {
+    if (digits.length === 9) return `${digits.slice(0,2)}-${digits.slice(2,5)}-${digits.slice(5)}`;
+    if (digits.length === 10) return `${digits.slice(0,2)}-${digits.slice(2,6)}-${digits.slice(6)}`;
+  }
+  if (digits.length === 10) return `${digits.slice(0,3)}-${digits.slice(3,6)}-${digits.slice(6)}`;
+  if (digits.length === 11) return `${digits.slice(0,3)}-${digits.slice(3,7)}-${digits.slice(7)}`;
+  return String(value || "");
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+function sanitizePhoneFilterInput(el){
+  if (!el) return;
+  el.value = el.value.replace(/\D/g, "").slice(0,4);
+}
+[phoneFirstFilter, phoneMiddleFilter, phoneLastFilter].forEach(el => {
+  el?.addEventListener("input", () => sanitizePhoneFilterInput(el));
+});
+phoneFirstFilter?.addEventListener("input", () => { if (phoneFirstFilter.value.length >= 3) phoneMiddleFilter?.focus(); });
+phoneMiddleFilter?.addEventListener("input", () => { if (phoneMiddleFilter.value.length === 4) phoneLastFilter?.focus(); });
+
+loginBtn.addEventListener("click",login);
+adminKeyInput.addEventListener("keydown",e => { if (e.key === "Enter") login(); });
+logoutBtn.addEventListener("click",() => {
+  sessionStorage.removeItem(SESSION_KEY);
+  adminKey = "";
+  adminKeyInput.value = "";
+  showLogin();
+});
+refreshBtn.addEventListener("click",loadApplications);
+searchBtn.addEventListener("click",renderTable);
+resetSearchBtn.addEventListener("click",resetSearch);
+clearQuickBtn.addEventListener("click",resetSearch);
+sortSelect.addEventListener("change",renderTable);
+keywordFilter.addEventListener("keydown",e => { if (e.key === "Enter") renderTable(); });
+toggleSearchBtn.addEventListener("click",() => {
+  const hidden = advancedSearchBody.classList.toggle("hidden");
+  toggleSearchBtn.textContent = hidden ? "검색조건 펼치기⌄" : "검색조건 접기⌃";
+});
+
+modalCloseBtn.addEventListener("click",closeModal);
+document.querySelector(".modal-backdrop").addEventListener("click",closeModal);
+saveDetailBtn.addEventListener("click",saveDetail);
+
+editManagerSelect.addEventListener("change",() => {
+  const custom = editManagerSelect.value === "__custom__";
+  customManagerField.classList.toggle("hidden",!custom);
+  if (custom) setTimeout(() => editManagerCustom.focus(),0);
+});
+
+document.addEventListener("keydown",e => {
+  if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
+});
+
+function setTodayLabel(){
+  const el = document.getElementById("todayLabel");
+  if (!el) return;
+  const now = new Date();
+  const weekdays = ["일","월","화","수","목","금","토"];
+  el.textContent = `${now.getFullYear()}년 ${now.getMonth()+1}월 ${now.getDate()}일 (${weekdays[now.getDay()]})`;
+}
+setTodayLabel();
+
+populateManagerOptions();
+
+if (adminKey) {
+  showDashboard();
+  loadApplications().catch(() => {
+    sessionStorage.removeItem(SESSION_KEY);
+    adminKey = "";
+    showLogin();
+  });
+} else {
+  showLogin();
+}
