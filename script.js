@@ -33,6 +33,17 @@ document.querySelectorAll("[data-scroll]").forEach(button => {
   });
 });
 
+document.querySelectorAll("[data-page]").forEach(button => {
+  button.addEventListener("click", () => {
+    window.location.href = `detail.html?page=${encodeURIComponent(button.dataset.page)}`;
+  });
+});
+
+const requestedStart = new URLSearchParams(window.location.search).get("start");
+if (["precheck", "filing", "brand", "status"].includes(requestedStart)) {
+  window.addEventListener("load", () => startWizard(requestedStart), { once: true });
+}
+
 const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
 const mainNav = document.querySelector(".main-nav");
 mobileMenuToggle?.addEventListener("click", () => {
@@ -76,7 +87,7 @@ function showSlide(index) {
 }
 function startSlideTimer() {
   clearInterval(slideTimer);
-  slideTimer = setInterval(() => showSlide(activeSlide + 1), 3000);
+  slideTimer = setInterval(() => showSlide(activeSlide + 1), 6000);
 }
 slideDots.forEach(dot => dot.addEventListener("click", () => {
   showSlide(Number(dot.dataset.slide));
