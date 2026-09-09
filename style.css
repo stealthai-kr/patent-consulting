@@ -473,6 +473,16 @@ input:focus, textarea:focus { border-bottom-color: var(--gold); }
 @media(max-width:640px){.hero-slider{height:700px}.hero-slide{background-position:64% center}.hero-slide:before{background:rgba(3,15,26,.72)}.slide-inner{padding:64px 20px 92px}.hero-slider .hero h1,.hero-slider h1{font-size:44px}.slider-controls{bottom:24px}.case-section{padding:72px 20px}.case-heading{grid-template-columns:1fr;gap:14px}.case-grid{grid-template-columns:1fr}.case-grid article,.case-grid article:last-child{min-height:auto;border-right:1px solid #d9d4c9;border-bottom:1px solid #d9d4c9}.customer-section{padding:64px 20px}.customer-actions{grid-template-columns:1fr}.customer-actions button{border-left:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16)}}
 @media(prefers-reduced-motion:reduce){.hero-slide,.hero-slider .hero-copy{transition:none}.slide-dot{transition:none}}
 
+/* V13: prevent a focused curtain from overlapping the hovered curtain */
+@media(min-width:1001px){
+  .menu-item:focus-within:not(:hover):not(.open) .curtain-menu{
+    opacity:0;visibility:hidden;transform:translate(-50%,-16px) scaleY(.88)
+  }
+  .menu-item:focus-within:not(:hover):not(.open) .curtain-right{
+    transform:translate(0,-16px) scaleY(.88)
+  }
+}
+
 .file-error{color:#a94534!important;font-weight:700}
 
 
