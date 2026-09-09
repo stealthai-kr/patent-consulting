@@ -1,0 +1,13 @@
+.profile-mark{
+  overflow:hidden;
+  background:#eef1f3;
+  color:transparent;
+  font-size:0;
+}
+.profile-mark img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  object-position:center top;
+}

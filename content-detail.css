@@ -1,0 +1,31 @@
+.content-block p {
+  line-height: 1.95;
+  word-break: keep-all;
+}
+
+.content-block p:last-child {
+  margin-bottom: 0;
+}
+
+.step-block {
+  position: relative;
+  padding-left: 28px;
+}
+
+.step-block::before {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 0;
+  width: 3px;
+  background: var(--gold);
+  content: "";
+}
+
+.step-block h3 {
+  color: #173a58;
+}
+
+@media (max-width: 600px) {
+  .step-block { padding-left: 18px; }
+}
