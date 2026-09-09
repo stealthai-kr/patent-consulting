@@ -2,12 +2,14 @@
 @media(max-width:900px){.home-summary-grid{grid-template-columns:1fr 1fr}.home-location{align-items:flex-start;flex-direction:column}.home-contact{width:100%}}
 @media(max-width:600px){.home-summary{padding:65px 18px}.home-summary-grid{grid-template-columns:1fr}.home-summary-grid a{min-height:auto}.home-location{padding:30px 24px}.home-contact{min-width:0;grid-template-columns:1fr}}
 
-/* 두 번째·네 번째 메인 화면은 밝은 톤으로 교차 표시 */
-.hero-slide.light-slide:before{background:linear-gradient(90deg,rgba(250,248,242,.97) 0%,rgba(250,248,242,.88) 39%,rgba(250,248,242,.2) 73%),linear-gradient(0deg,rgba(250,248,242,.34),transparent 48%)}
-.hero-slide.light-slide .hero-copy{color:#10293e}
-.hero-slide.light-slide .hero-text{color:#43586a}
-.hero-slide.light-slide h1 span{color:#9a702e}
-.hero-slide.light-slide .eyebrow{color:#9a702e}
-.hero-slide.light-slide .btn.secondary{border-color:#17344c;color:#17344c;background:rgba(255,255,255,.6)}
-.hero-slide.light-slide .btn.secondary:hover{background:#17344c;color:#fff}
-@media(max-width:640px){.hero-slide.light-slide:before{background:rgba(250,248,242,.88)}}
+/* 새 사진의 원래 밝기를 살리고 글자 부분만 최소한으로 보정 */
+.slide-global:before{background:linear-gradient(90deg,rgba(255,255,255,.10),transparent 58%)}
+.slide-global .hero-copy{color:#10293e;text-shadow:0 1px 1px rgba(255,255,255,.28)}
+.slide-global .hero-text{color:#29465d}
+.slide-global h1 span,.slide-global .eyebrow{color:#855f22}
+.slide-global .btn.secondary{border-color:#17344c;color:#17344c;background:rgba(255,255,255,.36)}
+.slide-brand:before{background:linear-gradient(90deg,rgba(3,15,26,.50) 0%,rgba(3,15,26,.26) 40%,transparent 72%)}
+.slide-brand .hero-copy{color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.32)}
+.slide-brand .hero-text{color:#eef3f6}
+.slide-consulting:before{background:linear-gradient(90deg,rgba(3,15,26,.88) 0%,rgba(3,15,26,.66) 39%,rgba(3,15,26,.08) 72%)}
+@media(max-width:640px){.slide-global:before{background:rgba(255,255,255,.40)}.slide-brand:before{background:rgba(3,15,26,.58)}}
