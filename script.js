@@ -25,6 +25,12 @@ const wizardSubtitle = document.getElementById("wizardSubtitle");
 const reviewContent = document.getElementById("reviewContent");
 const receiptNo = document.getElementById("receiptNo");
 
+document.querySelectorAll("[data-scroll]").forEach(button => {
+  button.addEventListener("click", () => {
+    document.getElementById(button.dataset.scroll)?.scrollIntoView({ behavior: "smooth" });
+  });
+});
+
 let currentStep = 0;
 let serviceType = "precheck";
 
