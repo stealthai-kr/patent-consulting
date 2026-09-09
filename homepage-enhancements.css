@@ -11,5 +11,5 @@
 .slide-brand:before{background:linear-gradient(90deg,rgba(3,15,26,.50) 0%,rgba(3,15,26,.26) 40%,transparent 72%)}
 .slide-brand .hero-copy{color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.32)}
 .slide-brand .hero-text{color:#eef3f6}
-.slide-consulting:before{background:linear-gradient(90deg,rgba(3,15,26,.88) 0%,rgba(3,15,26,.66) 39%,rgba(3,15,26,.08) 72%)}
+.slide-consulting:before{background:linear-gradient(90deg,rgba(3,15,26,.38) 0%,rgba(3,15,26,.20) 42%,transparent 72%)}
 @media(max-width:640px){.slide-global:before{background:rgba(255,255,255,.40)}.slide-brand:before{background:rgba(3,15,26,.58)}}
