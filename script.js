@@ -49,7 +49,18 @@ document.querySelectorAll("[data-page]").forEach(button => {
 
 const requestedStart = new URLSearchParams(window.location.search).get("start");
 if (["consultation", "precheck", "filing", "brand", "status"].includes(requestedStart)) {
-  window.addEventListener("load", () => startWizard(requestedStart), { once: true });
+  const entryKey = `stealthEntryHandled:${requestedStart}`;
+  const alreadyHandled = sessionStorage.getItem(entryKey) === "1";
+
+  if (!alreadyHandled) {
+    sessionStorage.setItem(entryKey, "1");
+    window.addEventListener("load", () => {
+      startWizard(requestedStart);
+      history.replaceState({}, "", window.location.pathname);
+    }, { once: true });
+  } else {
+    history.replaceState({}, "", window.location.pathname);
+  }
 }
 
 const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
