@@ -69,6 +69,15 @@ button { cursor: pointer; }
 }
 .brand strong { display: block; font-size: 16px; }
 .brand small { display: block; color: var(--muted); margin-top: 2px; font-size: 10px; letter-spacing: .08em; }
+
+.brand-logo {
+  display: block;
+  width: 255px;
+  max-width: 34vw;
+  height: auto;
+  object-fit: contain;
+}
+
 .main-nav { display: flex; gap: 8px; }
 .main-nav button {
   border: 0;
@@ -688,3 +697,29 @@ input:focus, textarea:focus { border-bottom-color: var(--gold); }
 .home-view>.about-section,.home-view>.greeting-section,.home-view>.attorney-section,.home-view>.practice-section,.home-view>.process-section,.home-view>.case-section,.home-view>.notice-section,.home-view>.customer-section{display:none}
 .hero-slider{height:calc(100vh - 74px);min-height:650px}
 body:has(#homeView:not(.hidden)) .site-footer{display:none}
+
+/* ===== HEADER LOGO IMAGE ===== */
+.site-header .brand {
+  min-width: 0;
+  flex: 0 1 auto;
+}
+.site-header .brand-logo {
+  width: 255px;
+  max-width: 34vw;
+}
+@media (max-width: 1000px) {
+  .site-header .brand-logo {
+    width: 230px;
+    max-width: 58vw;
+  }
+}
+@media (max-width: 640px) {
+  .header-inner {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .site-header .brand-logo {
+    width: 205px;
+    max-width: 68vw;
+  }
+}
