@@ -256,8 +256,7 @@ function renderStep() {
   if (isReview) buildReview();
 }
 
-function validateCurrentStep() {
-  const section = activeSteps[currentStep];
+function validateStep(section) {
   const required = [...section.querySelectorAll("[required]")];
 
   for (const el of required) {
@@ -279,6 +278,30 @@ function validateCurrentStep() {
       return false;
     }
   }
+  return true;
+}
+
+function validateCurrentStep() {
+  return validateStep(activeSteps[currentStep]);
+}
+
+// 최종 접수 전에 이전 단계 전체를 다시 확인합니다. 누락 항목이 있으면
+// 해당 화면으로 즉시 이동하므로 마지막 화면에서 뒤늦게 오류가 나지 않습니다.
+function validateAllInputSteps() {
+  const inputSteps = activeSteps.slice(0, -1);
+  const originalStep = currentStep;
+
+  for (let index = 0; index < inputSteps.length; index += 1) {
+    currentStep = index;
+    renderStep();
+    if (!validateCurrentStep()) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return false;
+    }
+  }
+
+  currentStep = originalStep;
+  renderStep();
   return true;
 }
 
@@ -496,7 +519,7 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   syncContactFields();
 
-  if (!validateCurrentStep()) return;
+  if (!validateAllInputSteps()) return;
 
   if (!phoneValue.value) {
     alert("연락처를 확인해주세요.");
@@ -524,9 +547,22 @@ form.addEventListener("submit", async (e) => {
   saveState.textContent = "접수 처리 중...";
 
   try {
+    const submittedData = formDataObject();
+
+    // 구버전 Apps Script가 특허출원 전용 필드를 검사하더라도 온라인 상담이
+    // 중단되지 않도록 상담 내용을 호환 필드에도 함께 전달합니다.
+    if (serviceType === "consultation") {
+      const category = submittedData.consultationCategory || "온라인 상담";
+      const inquiry = submittedData.implementation || submittedData.existingProblem || submittedData.inventionTitle;
+      submittedData.technicalField ||= category;
+      submittedData.objective ||= inquiry;
+      submittedData.effects ||= inquiry;
+      submittedData.differentiation ||= inquiry;
+    }
+
     const payload = {
       action: "submit",
-      ...formDataObject(),
+      ...submittedData,
       attachmentNames: selectedFiles.map(file => file.name).join(" · ")
     };
 
