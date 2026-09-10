@@ -35,7 +35,20 @@ form?.querySelectorAll("input, textarea").forEach(field => field.setAttribute("a
 
 document.querySelectorAll("[data-scroll]").forEach(button => {
   button.addEventListener("click", () => {
-    document.getElementById(button.dataset.scroll)?.scrollIntoView({ behavior: "smooth" });
+    const target = document.getElementById(button.dataset.scroll);
+    if (!target) return;
+
+    // 고객센터처럼 홈 화면 안의 위치로 이동할 때,
+    // 현재 진행상황/접수 화면이 열려 있어도 먼저 홈 화면을 보여준 뒤 이동합니다.
+    if (homeView && homeView.contains(target) && homeView.classList.contains("hidden")) {
+      showView(homeView);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => target.scrollIntoView({ behavior: "smooth", block: "start" }));
+      });
+    } else {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
     document.querySelector(".main-nav")?.classList.remove("mobile-open");
     document.querySelectorAll(".menu-item.open").forEach(item => item.classList.remove("open"));
   });
