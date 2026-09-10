@@ -29,6 +29,9 @@ const wizardSubtitle = document.getElementById("wizardSubtitle");
 const reviewContent = document.getElementById("reviewContent");
 const receiptNo = document.getElementById("receiptNo");
 
+// 브라우저가 이전 테스트값을 임의로 자동완성하지 않도록 합니다.
+form?.querySelectorAll("input, textarea").forEach(field => field.setAttribute("autocomplete", "off"));
+
 document.querySelectorAll("[data-scroll]").forEach(button => {
   button.addEventListener("click", () => {
     document.getElementById(button.dataset.scroll)?.scrollIntoView({ behavior: "smooth" });
@@ -224,7 +227,8 @@ function startWizard(type = "precheck") {
     emailDomainDirect.value = "";
     emailDomainDirect.classList.add("hidden");
   }
-  loadDraft();
+  // 새 접수는 언제나 빈 양식으로 시작합니다. 이전 테스트값은 자동 복원하지 않습니다.
+  localStorage.removeItem(currentDraftKey());
   syncContactFields();
   showView(wizardView);
   renderStep();
@@ -346,8 +350,13 @@ function saveDraft(manual = false) {
 }
 
 function clearLegacyDrafts() {
-  // 예전 버전에서 남은 테스트값(예: 1, 11 등)을 V11 최초 실행 시 모두 제거합니다.
+  // 예전 버전 및 서비스별 저장소에 남은 테스트 입력값을 모두 제거합니다.
   LEGACY_DRAFT_KEYS.forEach(key => localStorage.removeItem(key));
+  Object.keys(localStorage).forEach(key => {
+    if (key.startsWith("patentIntakeDraft") || key.startsWith(DRAFT_KEY_PREFIX)) {
+      localStorage.removeItem(key);
+    }
+  });
 }
 clearLegacyDrafts();
 
