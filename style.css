@@ -492,6 +492,17 @@ input:focus, textarea:focus { border-bottom-color: var(--gold); }
 
 .file-error{color:#a94534!important;font-weight:700}
 
+/* V20: 접수화면 특허 설계도 배경 */
+.wizard-view{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(circle at 18% 42%,rgba(28,79,113,.55),transparent 34%),linear-gradient(135deg,#061b2d 0%,#0a304e 52%,#071d31 100%)}
+.wizard-view:before{content:"";position:absolute;z-index:-1;left:max(-170px,calc(50% - 880px));top:50%;width:760px;height:760px;background:url("assets/intake-patent-blueprint.svg") center/contain no-repeat;opacity:.16;transform:translateY(-48%) rotate(-3deg);filter:drop-shadow(0 18px 40px rgba(0,0,0,.22));pointer-events:none}
+.wizard-view:after{content:"PATENT  ·  DESIGN  ·  TRADEMARK";position:absolute;z-index:-1;right:-45px;bottom:38px;color:rgba(210,177,111,.1);font:600 12px/1 Georgia,serif;letter-spacing:.42em;transform:rotate(-90deg);transform-origin:right bottom;pointer-events:none}
+.wizard-view[data-service="consultation"]:before{opacity:.12;transform:translateY(-48%) rotate(2deg) scale(.94)}
+.wizard-sidebar{position:relative;z-index:1;text-shadow:0 2px 18px rgba(0,0,0,.25)}
+.sidebar-note{backdrop-filter:blur(5px);background:rgba(5,29,48,.44)}
+.wizard-main{position:relative;z-index:2;box-shadow:0 28px 70px rgba(0,0,0,.28)}
+@media(max-width:900px){.wizard-view:before{left:-220px;top:310px;width:620px;height:620px;opacity:.1}}
+@media(max-width:640px){.wizard-view:before{left:-260px;top:250px;width:560px;height:560px;opacity:.08}.wizard-view:after{display:none}}
+
 
 /* V9 contact & upload */
 .phone-group .phone-first{

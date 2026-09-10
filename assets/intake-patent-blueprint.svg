@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
+  <g fill="none" stroke="#d5b36f" stroke-width="2" opacity=".68">
+    <circle cx="178" cy="180" r="90"/><circle cx="178" cy="180" r="48"/>
+    <path d="M178 64v35M178 261v35M62 180h35M259 180h35M96 98l25 25M235 237l25 25M96 262l25-25M235 123l25-25"/>
+    <path d="M420 105h250v170H420zM452 142h112M452 178h180M452 214h145"/>
+    <circle cx="720" cy="580" r="105"/><path d="M675 579l31 31 66-76M612 580H430M430 580v125H245"/>
+    <path d="M162 513c0-66 52-118 118-118s118 52 118 118c0 45-25 74-54 98-18 15-22 31-22 54h-84c0-23-4-39-22-54-29-24-54-53-54-98zM235 705h90M246 738h68"/>
+    <path d="M505 380h190M505 414h125M505 448h160"/>
+    <circle cx="505" cy="380" r="6" fill="#d5b36f"/><circle cx="695" cy="380" r="6" fill="#d5b36f"/>
+    <circle cx="505" cy="414" r="6" fill="#d5b36f"/><circle cx="630" cy="414" r="6" fill="#d5b36f"/>
+    <circle cx="505" cy="448" r="6" fill="#d5b36f"/><circle cx="665" cy="448" r="6" fill="#d5b36f"/>
+  </g>
+  <g fill="#d5b36f" font-family="Georgia,serif" opacity=".55">
+    <text x="420" y="88" font-size="18" letter-spacing="5">PATENT DRAWING</text>
+    <text x="612" y="720" font-size="15" letter-spacing="4">INTELLECTUAL PROPERTY</text>
+    <text x="90" y="825" font-size="13" letter-spacing="3">FIG. 01 / STEALTH IP LAW OFFICE</text>
+  </g>
+</svg>

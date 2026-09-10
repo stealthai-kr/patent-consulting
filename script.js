@@ -205,6 +205,7 @@ function showView(view) {
 
 function startWizard(type = "precheck") {
   serviceType = type;
+  wizardView.dataset.service = type;
   const meta = serviceMeta[type] || serviceMeta.precheck;
   wizardTitle.textContent = meta.title;
   wizardSubtitle.textContent = meta.subtitle;
