@@ -871,3 +871,52 @@ statusSearchBtn?.addEventListener("click", async () => {
     statusSearchBtn.textContent = "진행상황 조회";
   }
 });
+
+// ===== 접수번호 찾기 V1 =====
+const receiptFindToggle = document.getElementById("receiptFindToggle");
+const receiptFindPanel = document.getElementById("receiptFindPanel");
+const receiptFindName = document.getElementById("receiptFindName");
+const receiptFindPhone = document.getElementById("receiptFindPhone");
+const receiptFindBtn = document.getElementById("receiptFindBtn");
+const receiptFindResult = document.getElementById("receiptFindResult");
+
+receiptFindToggle?.addEventListener("click", () => {
+  receiptFindPanel?.classList.toggle("hidden");
+  if (!receiptFindPanel?.classList.contains("hidden")) receiptFindName?.focus();
+});
+receiptFindPhone?.addEventListener("input", () => {
+  receiptFindPhone.value = formatStatusPhone(receiptFindPhone.value);
+});
+[receiptFindName, receiptFindPhone].forEach(el => el?.addEventListener("keydown", e => {
+  if (e.key === "Enter") receiptFindBtn?.click();
+}));
+receiptFindBtn?.addEventListener("click", async () => {
+  const name = String(receiptFindName?.value || "").trim();
+  const phone = normalizeStatusPhone(receiptFindPhone?.value);
+  if (!name) { alert("접수할 때 입력한 성함/담당자명을 입력해 주세요."); receiptFindName?.focus(); return; }
+  if (phone.length < 9) { alert("접수할 때 입력한 연락처를 입력해 주세요."); receiptFindPhone?.focus(); return; }
+  receiptFindBtn.disabled = true;
+  receiptFindBtn.textContent = "찾는 중...";
+  receiptFindResult.innerHTML = "";
+  try {
+    const data = await apiPost({ action: "findReceipt", name, phone });
+    const items = Array.isArray(data.items) ? data.items : [];
+    if (!items.length) throw new Error("일치하는 접수 내역을 찾지 못했습니다.");
+    receiptFindResult.innerHTML = items.map(item => `
+      <div class="receipt-find-item">
+        <div><strong>${escapeStatusHtml(item.receiptNo)}</strong><small>${escapeStatusHtml(item.submittedAt || "")} · ${escapeStatusHtml(item.serviceType || "온라인 접수")}</small></div>
+        <button class="btn" type="button" data-use-receipt="${escapeStatusHtml(item.receiptNo)}">이 번호로 조회</button>
+      </div>`).join("");
+    receiptFindResult.querySelectorAll("[data-use-receipt]").forEach(btn => btn.addEventListener("click", () => {
+      statusReceiptNo.value = btn.dataset.useReceipt || "";
+      statusPhone.value = formatStatusPhone(phone);
+      receiptFindPanel.classList.add("hidden");
+      statusSearchBtn?.focus();
+    }));
+  } catch (err) {
+    receiptFindResult.innerHTML = `<div class="status-error">${escapeStatusHtml(err.message || "접수번호를 찾지 못했습니다.")}</div>`;
+  } finally {
+    receiptFindBtn.disabled = false;
+    receiptFindBtn.textContent = "접수번호 찾기";
+  }
+});
