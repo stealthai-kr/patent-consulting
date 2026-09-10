@@ -43,6 +43,30 @@ const basicDetail = document.getElementById("basicDetail");
 const inventionDetail = document.getElementById("inventionDetail");
 const detailReceiptNo = document.getElementById("detailReceiptNo");
 const detailStatusBadge = document.getElementById("detailStatusBadge");
+const detailContentTitle = document.getElementById("detailContentTitle");
+const detailContentSubtitle = document.getElementById("detailContentSubtitle");
+
+function serviceLabel(value) {
+  return ({
+    consultation: "온라인상담",
+    precheck: "특허 가능성 사전검토",
+    filing: "특허출원 접수",
+    brand: "상표·디자인 상담"
+  })[value] || value || "미분류";
+}
+
+function isConsultation(item) {
+  return serviceLabel(item && item.serviceType) === "온라인상담";
+}
+
+function consultationCategory(value) {
+  const match = String(value || "").match(/^\[상담분야\]\s*([^\n]+)/);
+  return match ? match[1].trim() : "";
+}
+
+function consultationField(value) {
+  return String(value || "").replace(/^\[상담분야\]\s*[^\n]+\n?/, "").trim();
+}
 const editStatus = document.getElementById("editStatus");
 const editManagerSelect = document.getElementById("editManagerSelect");
 const editManagerCustom = document.getElementById("editManagerCustom");
@@ -125,7 +149,7 @@ async function login() {
 }
 
 async function loadApplications() {
-  tbody.innerHTML = `<tr><td colspan="8" class="empty">접수 내역을 불러오는 중입니다.</td></tr>`;
+  tbody.innerHTML = `<tr><td colspan="9" class="empty">접수 내역을 불러오는 중입니다.</td></tr>`;
 
   try {
     const result = await apiPost({
@@ -139,7 +163,7 @@ async function loadApplications() {
     refreshManagerFilter();
     renderTable();
   } catch (err) {
-    tbody.innerHTML = `<tr><td colspan="8" class="empty">${escapeHtml(err.message || String(err))}</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="9" class="empty">${escapeHtml(err.message || String(err))}</td></tr>`;
   }
 }
 
@@ -230,7 +254,7 @@ function getFilteredApplications() {
 
     if (f.dateFrom && submittedDate < f.dateFrom) return false;
     if (f.dateTo && submittedDate > f.dateTo) return false;
-    if (f.service && item.serviceType !== f.service) return false;
+    if (f.service && serviceLabel(item.serviceType) !== f.service) return false;
     if (f.status && item.status !== f.status) return false;
     if (f.manager && item.manager !== f.manager) return false;
     if (f.name && !normalize(item.name).includes(f.name)) return false;
@@ -312,7 +336,7 @@ function renderTable() {
   activeFilterText.textContent = buildFilterSummary();
 
   if (!filtered.length) {
-    tbody.innerHTML = `<tr><td colspan="8" class="empty">조건에 맞는 접수 내역이 없습니다.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="9" class="empty">조건에 맞는 접수 내역이 없습니다.</td></tr>`;
     return;
   }
 
@@ -320,6 +344,7 @@ function renderTable() {
     <tr data-receipt="${escapeHtml(item.receiptNo)}" title="클릭하여 접수 상세보기">
       <td><button type="button" class="receipt-link" tabindex="-1">${escapeHtml(item.receiptNo)}</button></td>
       <td>${escapeHtml((item.submittedAt || "").slice(0,10))}</td>
+      <td>${escapeHtml(serviceLabel(item.serviceType))}</td>
       <td>${escapeHtml(item.name || "")}</td>
       <td>${escapeHtml(item.company || "")}</td>
       <td class="title-cell">${escapeHtml(item.inventionTitle || "")}</td>
@@ -373,16 +398,34 @@ async function openDetail(receiptNo) {
     setManagerValue(d.manager || "");
     editMemo.value = d.memo || "";
 
+    const consultation = isConsultation(d);
+    detailContentTitle.textContent = consultation ? "온라인 상담 내용" : "발명 내용";
+    detailContentSubtitle.textContent = consultation ? "Consultation" : "Invention";
+
     basicDetail.innerHTML = [
       ["접수일시", d.submittedAt],
-      ["서비스", d.serviceType],
+      ["서비스", serviceLabel(d.serviceType)],
+      ...(consultation ? [["상담 분야", consultationCategory(d.technicalField) || "일반 상담"]] : []),
       ["신청자", d.name],
       ["회사/소속", d.company],
       ["연락처", formatPhone(d.phone)],
       ["이메일", d.email]
     ].map(([label,value]) => detailItem(label,value)).join("");
 
-    const inventionItems = [
+    const inventionItems = consultation ? [
+      {label:"상담 제목",value:d.inventionTitle,wide:true,featured:true},
+      {label:"상담 대상 및 분야",value:consultationField(d.technicalField)},
+      {label:"현재 상황과 고민",value:d.existingProblem},
+      {label:"상담을 통해 원하는 도움",value:d.objective},
+      {label:"구체적인 문의 내용",value:d.implementation,wide:true},
+      {label:"첨부자료 설명",value:d.drawingDescription},
+      {label:"일정 또는 기한",value:d.results},
+      {label:"희망하는 결과",value:d.effects},
+      {label:"추가 문의사항",value:d.differentiation,wide:true,featured:true},
+      {label:"현재 진행 여부",value:d.disclosed},
+      {label:"진행내용 및 참고사항",value:d.disclosureNote,wide:true},
+      {label:"첨부파일",value:d.attachmentInfo,attachments:d.attachments || [],wide:true}
+    ] : [
       {label:"발명의 명칭",value:d.inventionTitle,wide:true,featured:true},
       {label:"기술 분야",value:d.technicalField},
       {label:"기존 방식의 문제점",value:d.existingProblem},

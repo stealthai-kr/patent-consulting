@@ -92,7 +92,7 @@
           <div class="search-grid search-grid-4">
             <label class="field compact"><span>접수 시작일</span><input id="dateFrom" type="date" /></label>
             <label class="field compact"><span>접수 종료일</span><input id="dateTo" type="date" /></label>
-            <label class="field compact"><span>서비스구분</span><select id="serviceFilter"><option value="">전체 서비스</option><option>특허 가능성 사전검토</option><option>특허출원 접수</option><option>상표·디자인 상담</option></select></label>
+            <label class="field compact"><span>서비스구분</span><select id="serviceFilter"><option value="">전체 서비스</option><option>온라인상담</option><option>특허 가능성 사전검토</option><option>특허출원 접수</option><option>상표·디자인 상담</option></select></label>
             <label class="field compact"><span>진행상태</span><select id="statusFilter"><option value="">전체 상태</option><option>신규접수</option><option>검토중</option><option>추가자료 요청</option><option>출원진행</option><option>출원완료</option></select></label>
           </div>
           <div class="search-grid search-grid-4">
@@ -112,12 +112,12 @@
           </div>
           <div class="search-grid search-grid-4">
             <label class="field compact"><span>이메일</span><input id="emailFilter" type="text" placeholder="이메일 일부" /></label>
-            <label class="field compact"><span>발명의 명칭</span><input id="titleFilter" type="text" placeholder="발명 명칭" /></label>
-            <label class="field compact"><span>기술 분야</span><input id="technicalFieldFilter" type="text" placeholder="예: 음식점 주문" /></label>
+            <label class="field compact"><span>발명·상담 제목</span><input id="titleFilter" type="text" placeholder="발명 또는 상담 제목" /></label>
+            <label class="field compact"><span>기술·상담 분야</span><input id="technicalFieldFilter" type="text" placeholder="예: 특허, 상표, 분쟁" /></label>
             <label class="field compact"><span>공개 여부</span><select id="disclosedFilter"><option value="">전체</option><option value="있음">있음</option><option value="없음">없음</option></select></label>
           </div>
           <div class="search-grid search-grid-bottom">
-            <label class="field compact keyword-field"><span>통합 키워드</span><input id="keywordFilter" type="search" placeholder="접수번호 · 신청자 · 회사 · 발명명칭 · 기술분야 · 문제점 · 해결과제 · 핵심차별점 · 메모까지 검색" /></label>
+            <label class="field compact keyword-field"><span>통합 키워드</span><input id="keywordFilter" type="search" placeholder="접수번호 · 신청자 · 회사 · 상담분야 · 문의내용 · 메모까지 검색" /></label>
             <label class="field compact sort-field"><span>정렬</span><select id="sortSelect"><option value="newest">최신 접수순</option><option value="oldest">오래된 접수순</option><option value="updated">최근 수정순</option><option value="name">신청자 가나다순</option></select></label>
             <div class="search-buttons"><button id="resetSearchBtn" class="reset-btn" type="button">↻ 초기화</button><button id="searchBtn" class="search-btn" type="button">⌕ 검색하기</button></div>
           </div>
@@ -134,8 +134,8 @@
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>접수번호</th><th>접수일</th><th>신청자</th><th>회사/소속</th><th>발명의 명칭</th><th>진행상태</th><th>담당자</th><th>관리</th></tr></thead>
-            <tbody id="applicationTableBody"><tr><td colspan="8" class="empty">접수 내역을 불러오는 중입니다.</td></tr></tbody>
+            <thead><tr><th>접수번호</th><th>접수일</th><th>서비스</th><th>신청자</th><th>회사/소속</th><th>발명·상담 제목</th><th>진행상태</th><th>담당자</th><th>관리</th></tr></thead>
+            <tbody id="applicationTableBody"><tr><td colspan="9" class="empty">접수 내역을 불러오는 중입니다.</td></tr></tbody>
           </table>
         </div>
       </section>
@@ -168,8 +168,8 @@
 
           <section class="detail-section">
             <div class="section-heading">
-              <h3>발명 내용</h3>
-              <span>Invention</span>
+              <h3 id="detailContentTitle">접수 내용</h3>
+              <span id="detailContentSubtitle">Application</span>
             </div>
             <div id="inventionDetail" class="invention-grid"></div>
           </section>
@@ -231,6 +231,6 @@
   </div>
 
 
-  <script src="admin.js"></script>
+  <script src="admin.js?v=20260910-2"></script>
 </body>
 </html>
