@@ -26,7 +26,6 @@ const pages={
  resources:{g:"center",title:"자료실",lead:"출원 준비와 지식재산권 관리에 도움이 되는 기본자료를 제공합니다.",s:[["출원 준비 체크리스트",["발명의 문제점·구성·효과·차별점 정리","공개·판매·발표 여부 확인","도면·사진·시험자료 준비"]],["권리관리 체크리스트",["심사기한과 의견서 제출기한 확인","등록료·연차료 납부일 관리","상표 갱신과 실제 사용자료 보관"]]]}
 };
 Object.assign(pages,window.additionalPages||{});
-Object.entries(window.pageEnhancements||{}).forEach(([pageKey,sections])=>{if(pages[pageKey])pages[pageKey].s.push(...sections)});
 pages.patent.s.unshift(["출원과 등록은 어떻게 다른가요?",["출원은 보호받고 싶은 발명의 내용을 서류로 작성해 특허청에 제출하고 출원일을 확보하는 절차입니다. 출원번호를 받았다고 곧바로 독점권이 생기는 것은 아니며, 심사청구와 실체심사를 거쳐 등록결정을 받아야 합니다.","등록은 심사를 통과한 뒤 등록료를 납부해 특허권이 설정된 상태를 말합니다. 출원 중에는 ‘특허출원 중’, 권리가 설정된 뒤에는 ‘특허등록’으로 구분하여 표시하는 것이 정확합니다."]]);
 pages.process.s.unshift(["전체 흐름 한눈에 보기",["상담·자료접수 → 권리관계 확인 → 선행기술조사 → 출원전략 협의 → 명세서·도면 작성 → 특허청 출원 및 심사청구 → 실체심사와 의견서 대응 → 등록료 납부 및 권리관리 순서로 진행됩니다.","사건마다 기술의 완성도, 공개 일정과 심사 결과가 달라 실제 소요기간과 대응 횟수는 달라질 수 있습니다. 각 단계가 시작될 때 필요한 결정, 자료와 예상비용을 별도로 안내합니다."]]);
 const key=new URLSearchParams(location.search).get("page")||"greeting";const page=pages[key]||pages.greeting;const group=groups[page.g];
@@ -36,3 +35,21 @@ const blocks=page.s.map(([title,items])=>{const isStep=/^(STEP|\d{2}\s*·)/.test
 if(key==="attorney"){document.querySelector(".profile-mark").innerHTML=`<div class="profile-intro"><b>TECHNOLOGY · PATENT EXAMINATION</b><p>산업 현장의 개발 경험과 특허청 심사 실무를 바탕으로 기술의 핵심을 정확하게 파악하고 실효성 있는 권리범위를 설계합니다.</p></div><div class="profile-photo-wrap"><img src="assets/byeon-changgyu-attorney.png" alt="변창규 대표변리사 정장 프로필"><div class="profile-caption"><small>대표변리사</small><strong>변창규</strong></div></div>`;}
 if(key==="location"){const blocks=document.querySelectorAll(".content-block");const last=blocks[blocks.length-1];last?.querySelectorAll("p").forEach(p=>{if(p.textContent.trim().startsWith("지도 열기:"))p.remove()});document.getElementById("pageContent").insertAdjacentHTML("beforeend",`<section class="location-map" aria-label="스텔스국제특허법률사무소 위치 지도"><iframe title="스텔스국제특허법률사무소 위치" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%EB%8C%80%EC%A0%84%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%8C%80%EB%8D%95%EA%B5%AC%20%EB%8C%80%ED%99%94%EB%A1%9C106%EB%B2%88%EA%B8%B8%2066&output=embed"></iframe><div class="map-caption"><div><strong>펜타플렉스 511호</strong><span>대전광역시 대덕구 대화로106번길 66</span></div><a href="https://map.naver.com/p/search/%EB%8C%80%EC%A0%84%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%8C%80%EB%8D%95%EA%B5%AC%20%EB%8C%80%ED%99%94%EB%A1%9C106%EB%B2%88%EA%B8%B8%2066" target="_blank" rel="noopener">큰 지도에서 보기</a></div></section>`);}
 const menuToggle=document.getElementById("menuToggle"),detailNav=document.getElementById("detailNav");menuToggle.addEventListener("click",()=>{const open=detailNav.classList.toggle("open");menuToggle.setAttribute("aria-expanded",String(open));menuToggle.textContent=open?"×":"☰"});document.querySelectorAll(".detail-menu-item>button").forEach(button=>button.addEventListener("click",()=>{const item=button.parentElement,willOpen=!item.classList.contains("open");document.querySelectorAll(".detail-menu-item.open").forEach(x=>x.classList.remove("open"));item.classList.toggle("open",willOpen)}));
+
+
+// ===== DETAIL NAV DROPDOWN SINGLE-OPEN FIX =====
+document.querySelectorAll(".detail-menu-item").forEach(item => {
+  item.addEventListener("mouseenter", () => {
+    if (window.innerWidth > 820) {
+      document.querySelectorAll(".detail-menu-item.open").forEach(openItem => {
+        if (openItem !== item) openItem.classList.remove("open");
+      });
+    }
+  });
+});
+
+document.getElementById("detailNav")?.addEventListener("mouseleave", () => {
+  if (window.innerWidth > 820) {
+    document.querySelectorAll(".detail-menu-item.open").forEach(item => item.classList.remove("open"));
+  }
+});
