@@ -40,7 +40,7 @@ document.querySelectorAll("[data-page]").forEach(button => {
 });
 
 const requestedStart = new URLSearchParams(window.location.search).get("start");
-if (["precheck", "filing", "brand", "status"].includes(requestedStart)) {
+if (["consultation", "precheck", "filing", "brand", "status"].includes(requestedStart)) {
   window.addEventListener("load", () => startWizard(requestedStart), { once: true });
 }
 
@@ -100,6 +100,10 @@ let currentStep = 0;
 let serviceType = "precheck";
 
 const serviceMeta = {
+  consultation: {
+    title: "온라인 상담 신청",
+    subtitle: "상담 분야와 현재 상황을 편하게 알려주세요. 대표변리사가 확인 후 연락드립니다."
+  },
   precheck: {
     title: "특허 가능성 사전검토",
     subtitle: "핵심 정보만 순서대로 입력해주세요."
@@ -118,6 +122,53 @@ const serviceMeta = {
   }
 };
 
+const consultationCategoryField = document.getElementById("consultationCategoryField");
+const consultationCategory = document.getElementById("consultationCategory");
+const originalStepCopy = steps.map(step => ({
+  title: step.querySelector("h3")?.textContent || "",
+  desc: step.querySelector(".step-desc")?.textContent.trim() || "",
+  label: step.querySelector(".field > span")?.textContent || "",
+  placeholder: step.querySelector("textarea, input[name='inventionTitle']")?.placeholder || ""
+}));
+
+const consultationStepCopy = [
+  null,
+  ["상담 제목","궁금한 내용을 한 문장으로 적어주세요.","상담 제목 *","예: 상표 등록 가능성과 출원 비용을 상담받고 싶습니다"],
+  ["상담 대상","어떤 제품·서비스·브랜드 또는 사건에 관한 문의인지 알려주세요.","상담 대상 및 분야 *","예: 음식점 브랜드 상표, 소프트웨어 특허, 제품 디자인, 해외출원 등"],
+  ["현재 상황","현재 진행된 내용과 가장 고민되는 점을 알려주세요.","현재 상황과 고민 *","예: 상호를 사용 중인데 비슷한 상표가 발견되어 등록 가능성이 궁금합니다"],
+  ["원하는 상담 내용","변리사에게 어떤 도움을 받고 싶은지 알려주세요.","원하는 도움 *","예: 등록 가능성 검토, 출원 절차·비용 안내, 경고장 대응 상담 등"],
+  ["구체적인 내용","상담에 필요한 사실관계나 제품·서비스 내용을 적어주세요.","구체적인 문의 내용 *","관련된 사람, 제품, 진행 경위와 중요한 내용을 자유롭게 작성해 주세요"],
+  ["관련 자료 첨부","상담에 도움이 되는 사진·도면·공문·등록공보 또는 PDF를 첨부할 수 있습니다.","첨부자료 설명","첨부한 자료가 무엇인지 간단히 설명해 주세요"],
+  ["중요 일정","출시·공개·답변기한 등 중요한 날짜가 있으면 알려주세요.","일정 및 기한","예: 다음 달 제품 출시 예정, 경고장 답변기한 2026년 10월 5일"],
+  ["희망하는 결과","이번 상담을 통해 확인하거나 해결하고 싶은 결과를 적어주세요.","희망 결과 *","예: 출원 가능 여부와 예상 절차를 확인한 뒤 출원을 결정하고 싶습니다"],
+  ["추가 문의사항","앞에서 작성하지 못한 내용이나 특별히 확인할 사항을 적어주세요.","추가 문의사항 *","비용, 소요기간, 해외출원, 분쟁 가능성 등 궁금한 사항을 적어주세요"],
+  ["진행 여부 · 제출 동의","이미 출원·등록·공개·판매 또는 분쟁이 진행 중인지 알려주세요.",null,null]
+];
+
+function configureWizardCopy(type){
+  const consultation = type === "consultation";
+  consultationCategoryField?.classList.toggle("hidden", !consultation);
+  if(consultationCategory) consultationCategory.required = consultation;
+  const firstDesc=steps[0]?.querySelector(".step-desc");
+  if(firstDesc) firstDesc.textContent=consultation?"상담 내용을 확인하고 연락드릴 기본 정보를 입력해 주세요.":originalStepCopy[0].desc;
+  steps.forEach((step,index)=>{
+    if(index===0 || index===steps.length-1) return;
+    const copy = consultation ? consultationStepCopy[index] : [originalStepCopy[index].title,originalStepCopy[index].desc,originalStepCopy[index].label,originalStepCopy[index].placeholder];
+    if(!copy) return;
+    const title=step.querySelector("h3"),desc=step.querySelector(".step-desc"),label=step.querySelector(".field > span"),input=step.querySelector("textarea, input[name='inventionTitle']");
+    if(title) title.textContent=copy[0];
+    if(desc) desc.textContent=copy[1];
+    if(label && copy[2]) label.textContent=copy[2];
+    if(input && copy[3]!==null) input.placeholder=copy[3];
+  });
+  const disclosureLegend=steps[10]?.querySelector("legend");
+  if(disclosureLegend) disclosureLegend.textContent=consultation?"이미 출원·등록·공개·판매 또는 분쟁이 진행 중입니까? *":"공개한 적이 있습니까? *";
+  const disclosureLabel=steps[10]?.querySelector("textarea[name='disclosureNote']")?.closest("label")?.querySelector("span");
+  if(disclosureLabel) disclosureLabel.textContent=consultation?"진행 내용 또는 추가 참고사항":"공개 내용 또는 참고사항";
+  const uploadNotice=document.querySelector(".upload-email-notice");
+  if(uploadNotice) uploadNotice.innerHTML=consultation?'용량을 초과하거나 지원하지 않는 형식의 자료는 <b><span id="supportEmailText">회사 상담 이메일 주소</span>로 별도 전송</b>해 주세요. 이메일 제목에는 신청자명과 상담 제목을 함께 적어주세요.':'용량을 초과하거나 위 형식 외의 자료는 <b><span id="supportEmailText">회사 상담 이메일 주소</span>로 별도 전송</b>해 주세요. 이메일 제목에는 신청자명과 발명의 명칭을 함께 적어주세요.';
+}
+
 function showView(view) {
   [homeView, wizardView, successView].forEach(v => v.classList.add("hidden"));
   view.classList.remove("hidden");
@@ -129,6 +180,7 @@ function startWizard(type = "precheck") {
   const meta = serviceMeta[type] || serviceMeta.precheck;
   wizardTitle.textContent = meta.title;
   wizardSubtitle.textContent = meta.subtitle;
+  configureWizardCopy(type);
 
   if (type === "status") {
     alert("진행상황 조회는 백엔드 연결 단계에서 접수번호 기반으로 구현하면 됩니다.");
@@ -330,6 +382,7 @@ function loadDraft() {
 }
 
 const labels = {
+  consultationCategory: "상담 분야",
   name: "성함 / 담당자명",
   company: "회사명 · 소속",
   phone: "연락처",
@@ -347,11 +400,18 @@ const labels = {
   disclosureNote: "공개 내용 / 참고사항"
 };
 
+const consultationLabels = {
+  name:"성함 / 담당자명",company:"회사명 · 소속",phone:"연락처",email:"이메일",consultationCategory:"상담 분야",
+  inventionTitle:"상담 제목",technicalField:"상담 대상 및 분야",existingProblem:"현재 상황과 고민",objective:"원하는 도움",
+  implementation:"구체적인 문의 내용",drawingDescription:"첨부자료 설명",results:"일정 및 기한",effects:"희망 결과",
+  differentiation:"추가 문의사항",disclosed:"현재 진행 여부",disclosureNote:"진행 내용 / 참고사항"
+};
+
 function buildReview() {
   const data = formDataObject();
   reviewContent.innerHTML = "";
 
-  Object.entries(labels).forEach(([key, label]) => {
+  Object.entries(serviceType === "consultation" ? consultationLabels : labels).forEach(([key, label]) => {
     const value = data[key] || "—";
     const item = document.createElement("div");
     item.className = "review-item";
