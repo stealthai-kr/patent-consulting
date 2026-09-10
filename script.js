@@ -2,8 +2,12 @@ const API_URL = "https://script.google.com/macros/s/AKfycbzA9_n1_DKpNayQiV0hoWw3
 const MAX_UPLOAD_FILES = 3;
 const MAX_UPLOAD_BYTES = 5 * 1024 * 1024;
 const ALLOWED_UPLOAD_TYPES = ["image/jpeg", "image/png", "application/pdf"];
-const DRAFT_KEY = "patentIntakeDraftV11";
-const LEGACY_DRAFT_KEYS = ["patentIntakeDraft","patentIntakeDraftV10","patentIntakeDraftV9","patentIntakeDraftV8"];
+const DRAFT_KEY_PREFIX = "stealthIntakeDraftV12:";
+const LEGACY_DRAFT_KEYS = ["patentIntakeDraft","patentIntakeDraftV11","patentIntakeDraftV10","patentIntakeDraftV9","patentIntakeDraftV8"];
+
+function currentDraftKey() {
+  return `${DRAFT_KEY_PREFIX}${serviceType}`;
+}
 
 
 const homeView = document.getElementById("homeView");
@@ -211,8 +215,15 @@ function startWizard(type = "precheck") {
     return;
   }
 
+  // 다른 서비스에서 입력한 값이 현재 화면으로 넘어오지 않도록 먼저 초기화합니다.
+  form.reset();
+  if (phoneFirst) phoneFirst.value = "010";
+  if (emailDomain) emailDomain.value = "naver.com";
+  if (emailDomainDirect) {
+    emailDomainDirect.value = "";
+    emailDomainDirect.classList.add("hidden");
+  }
   loadDraft();
-  if (!localStorage.getItem(DRAFT_KEY) && phoneFirst) phoneFirst.value = "010";
   syncContactFields();
   showView(wizardView);
   renderStep();
@@ -324,7 +335,7 @@ function formDataObject() {
 }
 
 function saveDraft(manual = false) {
-  localStorage.setItem(DRAFT_KEY, JSON.stringify({
+  localStorage.setItem(currentDraftKey(), JSON.stringify({
     serviceType,
     currentStep,
     data: formDataObject()
@@ -340,7 +351,7 @@ function clearLegacyDrafts() {
 clearLegacyDrafts();
 
 window.addEventListener("pageshow", () => {
-  if (!localStorage.getItem(DRAFT_KEY)) {
+  if (!localStorage.getItem(currentDraftKey())) {
     const nameField = form?.querySelector('[name="name"]');
     const companyField = form?.querySelector('[name="company"]');
     const titleField = form?.querySelector('[name="inventionTitle"]');
@@ -360,7 +371,7 @@ window.addEventListener("pageshow", () => {
 
 
 function loadDraft() {
-  const raw = localStorage.getItem(DRAFT_KEY);
+  const raw = localStorage.getItem(currentDraftKey());
   if (!raw) return;
   try {
     const draft = JSON.parse(raw);
@@ -547,7 +558,7 @@ form.addEventListener("submit", async (e) => {
       }
     }
 
-    localStorage.removeItem(DRAFT_KEY);
+    localStorage.removeItem(currentDraftKey());
     receiptNo.textContent = newReceiptNo;
 
     form.reset();
