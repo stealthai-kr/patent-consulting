@@ -7,6 +7,39 @@
   <title>스텔스국제특허법률사무소</title>
   <link rel="stylesheet" href="style.css?v=22" />
   <link rel="stylesheet" href="homepage-enhancements.css?v=22" />
+
+  <style>
+    .status-view{min-height:calc(100vh - 90px);background:#061c2d;padding:42px 24px 70px}
+    .status-shell{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:300px minmax(0,1fr);gap:0}
+    .status-view .wizard-sidebar{min-height:620px}
+    .status-main{background:#f7f1e5;min-height:620px;padding:54px}
+    .status-card{max-width:760px;margin:0 auto}
+    .status-card h3{font-size:32px;margin:8px 0 10px;color:#10263a}
+    .status-actions{display:flex;justify-content:flex-end;margin-top:28px}
+    .status-result{margin-top:34px;border-top:1px solid #d8cfbf;padding-top:28px}
+    .status-result.hidden{display:none}
+    .status-result-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:24px}
+    .status-receipt{font-size:14px;color:#7a8792;margin-bottom:6px}
+    .status-current{font-size:28px;font-weight:800;color:#10263a}
+    .status-badge{display:inline-flex;padding:8px 13px;border:1px solid #bd9651;color:#8b6428;background:#fffaf0;font-weight:700}
+    .status-progress{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:24px 0}
+    .status-progress span{padding:12px 7px;text-align:center;border-top:3px solid #d8cfbf;color:#8b949b;font-size:13px}
+    .status-progress span.done,.status-progress span.current{border-color:#bd9651;color:#10263a;font-weight:700}
+    .status-progress span.current{background:#f0e4cf}
+    .status-info{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid #ded6c8}
+    .status-info div{padding:16px 0;border-bottom:1px solid #ded6c8}
+    .status-info small{display:block;color:#7a8792;margin-bottom:5px}
+    .status-info strong{color:#10263a}
+    .status-error{padding:16px 18px;background:#fff4f2;border:1px solid #e1b5ad;color:#8a352b}
+    @media(max-width:800px){
+      .status-shell{grid-template-columns:1fr}
+      .status-main{padding:30px 20px}
+      .status-view .wizard-sidebar{min-height:auto}
+      .status-progress{grid-template-columns:1fr}
+      .status-info{grid-template-columns:1fr}
+    }
+  </style>
+
 </head>
 <body>
   <header class="site-header">
@@ -187,7 +220,48 @@
         </p>
       </section>
 
-      <section id="contact" class="customer-section"><div><p class="eyebrow">CUSTOMER CENTER</p><h2>고객센터</h2><p>궁금한 사항과 출원 준비자료를 온라인으로 남겨주세요.</p></div><div class="customer-actions"><button type="button" data-start="consultation"><b>온라인상담</b><span>특허·상표·디자인·해외출원·분쟁 등에 관한 상담을 신청합니다.</span></button><button type="button" data-service="filing"><b>온라인접수</b><span>발명 내용과 첨부자료를 단계별로 접수합니다.</span></button><button type="button" data-service="status"><b>진행상황 조회</b><span>접수번호 조회 기능을 연결할 예정입니다.</span></button></div></section>
+      <section id="contact" class="customer-section"><div><p class="eyebrow">CUSTOMER CENTER</p><h2>고객센터</h2><p>궁금한 사항과 출원 준비자료를 온라인으로 남겨주세요.</p></div><div class="customer-actions"><button type="button" data-start="consultation"><b>온라인상담</b><span>특허·상표·디자인·해외출원·분쟁 등에 관한 상담을 신청합니다.</span></button><button type="button" data-service="filing"><b>온라인접수</b><span>발명 내용과 첨부자료를 단계별로 접수합니다.</span></button><button type="button" data-service="status"><b>진행상황 조회</b><span>접수번호와 접수 시 연락처로 현재 진행상태를 확인합니다.</span></button></div></section>
+    </section>
+
+
+    <section id="statusView" class="status-view hidden">
+      <div class="status-shell">
+        <aside class="wizard-sidebar">
+          <button class="back-home" type="button" data-go-home>← 처음으로</button>
+          <p class="eyebrow">APPLICATION STATUS</p>
+          <h2>진행상황 조회</h2>
+          <p>접수번호와 접수할 때 입력한 연락처를 입력해 주세요.</p>
+          <div class="sidebar-note">
+            <strong>조회 안내</strong>
+            <p>개인정보 보호를 위해 접수번호와 연락처가 모두 일치해야 조회됩니다.</p>
+          </div>
+        </aside>
+
+        <div class="status-main">
+          <div class="status-card">
+            <p class="sheet-label">CUSTOMER SERVICE</p>
+            <h3>나의 출원 진행상황</h3>
+            <p class="step-desc">온라인 상담·사전검토·특허출원 접수 후 현재 처리 단계를 확인할 수 있습니다.</p>
+
+            <div class="field-grid two">
+              <label class="field">
+                <span>접수번호 *</span>
+                <input id="statusReceiptNo" type="text" placeholder="예: IP-20260910-0001" autocomplete="off" />
+              </label>
+              <label class="field">
+                <span>접수 시 연락처 *</span>
+                <input id="statusPhone" type="tel" placeholder="예: 010-1234-5678" autocomplete="off" />
+              </label>
+            </div>
+
+            <div class="status-actions">
+              <button id="statusSearchBtn" class="btn primary" type="button">진행상황 조회</button>
+            </div>
+
+            <div id="statusResult" class="status-result hidden" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="wizardView" class="wizard-view hidden">

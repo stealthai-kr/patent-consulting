@@ -13,6 +13,7 @@ function currentDraftKey() {
 const homeView = document.getElementById("homeView");
 const wizardView = document.getElementById("wizardView");
 const successView = document.getElementById("successView");
+const statusView = document.getElementById("statusView");
 const form = document.getElementById("intakeForm");
 const steps = [...document.querySelectorAll(".step")];
 
@@ -201,7 +202,7 @@ function configureWizardCopy(type){
 }
 
 function showView(view) {
-  [homeView, wizardView, successView].forEach(v => v.classList.add("hidden"));
+  [homeView, wizardView, successView, statusView].filter(Boolean).forEach(v => v.classList.add("hidden"));
   view.classList.remove("hidden");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -215,7 +216,17 @@ function startWizard(type = "precheck") {
   configureWizardCopy(type);
 
   if (type === "status") {
-    alert("진행상황 조회는 백엔드 연결 단계에서 접수번호 기반으로 구현하면 됩니다.");
+    const receiptInput = document.getElementById("statusReceiptNo");
+    const phoneInput = document.getElementById("statusPhone");
+    const resultBox = document.getElementById("statusResult");
+    if (receiptInput) receiptInput.value = "";
+    if (phoneInput) phoneInput.value = "";
+    if (resultBox) {
+      resultBox.innerHTML = "";
+      resultBox.classList.add("hidden");
+    }
+    showView(statusView);
+    setTimeout(() => receiptInput?.focus(), 100);
     return;
   }
 
@@ -747,3 +758,105 @@ loadPublicConfig();
 
 
 renderStep();
+
+
+// ===== 고객용 진행상황 조회 V1 =====
+
+const statusReceiptNo = document.getElementById("statusReceiptNo");
+const statusPhone = document.getElementById("statusPhone");
+const statusSearchBtn = document.getElementById("statusSearchBtn");
+const statusResult = document.getElementById("statusResult");
+
+function escapeStatusHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;").replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function normalizeStatusPhone(value) {
+  return String(value || "").replace(/\D/g, "").slice(0, 11);
+}
+
+function formatStatusPhone(value) {
+  const digits = normalizeStatusPhone(value);
+  if (digits.length <= 3) return digits;
+  if (digits.length <= 7) return `${digits.slice(0,3)}-${digits.slice(3)}`;
+  return `${digits.slice(0,3)}-${digits.slice(3,7)}-${digits.slice(7)}`;
+}
+
+statusPhone?.addEventListener("input", () => {
+  statusPhone.value = formatStatusPhone(statusPhone.value);
+});
+
+[statusReceiptNo, statusPhone].forEach(el => el?.addEventListener("keydown", e => {
+  if (e.key === "Enter") statusSearchBtn?.click();
+}));
+
+function statusStageIndex(status) {
+  const text = String(status || "").trim();
+  if (text === "신규접수") return 0;
+  if (text === "검토중" || text === "추가자료 요청") return 1;
+  if (text === "출원진행") return 2;
+  if (text === "출원완료" || text === "특허청 심사중" || text === "의견제출통지 대응") return 3;
+  if (text === "등록결정" || text === "등록완료") return 4;
+  return 0;
+}
+
+function renderStatusResult(data) {
+  const stages = ["접수완료","담당자 검토","출원 준비","특허청 진행","등록"];
+  const idx = statusStageIndex(data.status);
+  const progress = stages.map((label, i) => {
+    const cls = i < idx ? "done" : (i === idx ? "current" : "");
+    return `<span class="${cls}">${label}</span>`;
+  }).join("");
+
+  statusResult.innerHTML = `
+    <div class="status-result-head">
+      <div>
+        <div class="status-receipt">${escapeStatusHtml(data.receiptNo)}</div>
+        <div class="status-current">${escapeStatusHtml(data.status || "진행상태 확인 중")}</div>
+      </div>
+      <span class="status-badge">${escapeStatusHtml(data.serviceType || "온라인 접수")}</span>
+    </div>
+    <div class="status-progress">${progress}</div>
+    <div class="status-info">
+      <div><small>신청인</small><strong>${escapeStatusHtml(data.name || "-")}</strong></div>
+      <div><small>접수일시</small><strong>${escapeStatusHtml(data.submittedAt || "-")}</strong></div>
+      <div><small>발명·상담 제목</small><strong>${escapeStatusHtml(data.inventionTitle || "-")}</strong></div>
+      <div><small>담당자</small><strong>${escapeStatusHtml(data.manager || "담당자 배정 전")}</strong></div>
+      <div><small>최근 업데이트</small><strong>${escapeStatusHtml(data.updatedAt || "-")}</strong></div>
+    </div>`;
+  statusResult.classList.remove("hidden");
+}
+
+statusSearchBtn?.addEventListener("click", async () => {
+  const receiptNo = String(statusReceiptNo?.value || "").trim().toUpperCase();
+  const phone = normalizeStatusPhone(statusPhone?.value);
+
+  if (!receiptNo) {
+    alert("접수번호를 입력해 주세요.");
+    statusReceiptNo?.focus();
+    return;
+  }
+  if (phone.length < 9) {
+    alert("접수할 때 입력한 연락처를 입력해 주세요.");
+    statusPhone?.focus();
+    return;
+  }
+
+  statusSearchBtn.disabled = true;
+  statusSearchBtn.textContent = "조회 중...";
+  statusResult.classList.add("hidden");
+
+  try {
+    const data = await apiPost({ action: "status", receiptNo, phone });
+    renderStatusResult(data);
+  } catch (err) {
+    statusResult.innerHTML = `<div class="status-error">${escapeStatusHtml(err.message || "진행상황을 조회하지 못했습니다.")}</div>`;
+    statusResult.classList.remove("hidden");
+  } finally {
+    statusSearchBtn.disabled = false;
+    statusSearchBtn.textContent = "진행상황 조회";
+  }
+});
