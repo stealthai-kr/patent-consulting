@@ -98,6 +98,17 @@ if (heroSlides.length) startSlideTimer();
 
 let currentStep = 0;
 let serviceType = "precheck";
+let activeSteps = steps;
+
+function setActiveSteps(type) {
+  // 온라인 상담은 특허출원용 전문 질문을 제외한 별도 간편 절차입니다.
+  const consultationIndexes = [0, 1, 3, 5, 6, 10, 11];
+  activeSteps = type === "consultation"
+    ? consultationIndexes.map(index => steps[index])
+    : steps;
+  steps.forEach(step => step.classList.remove("active"));
+  currentStep = 0;
+}
 
 const serviceMeta = {
   consultation: {
@@ -134,19 +145,24 @@ const originalStepCopy = steps.map(step => ({
 const consultationStepCopy = [
   null,
   ["상담 제목","궁금한 내용을 한 문장으로 적어주세요.","상담 제목 *","예: 상표 등록 가능성과 출원 비용을 상담받고 싶습니다"],
-  ["상담 대상","어떤 제품·서비스·브랜드 또는 사건에 관한 문의인지 알려주세요.","상담 대상 및 분야 *","예: 음식점 브랜드 상표, 소프트웨어 특허, 제품 디자인, 해외출원 등"],
+  null,
   ["현재 상황","현재 진행된 내용과 가장 고민되는 점을 알려주세요.","현재 상황과 고민 *","예: 상호를 사용 중인데 비슷한 상표가 발견되어 등록 가능성이 궁금합니다"],
-  ["원하는 상담 내용","변리사에게 어떤 도움을 받고 싶은지 알려주세요.","원하는 도움 *","예: 등록 가능성 검토, 출원 절차·비용 안내, 경고장 대응 상담 등"],
-  ["구체적인 내용","상담에 필요한 사실관계나 제품·서비스 내용을 적어주세요.","구체적인 문의 내용 *","관련된 사람, 제품, 진행 경위와 중요한 내용을 자유롭게 작성해 주세요"],
-  ["관련 자료 첨부","상담에 도움이 되는 사진·도면·공문·등록공보 또는 PDF를 첨부할 수 있습니다.","첨부자료 설명","첨부한 자료가 무엇인지 간단히 설명해 주세요"],
-  ["중요 일정","출시·공개·답변기한 등 중요한 날짜가 있으면 알려주세요.","일정 및 기한","예: 다음 달 제품 출시 예정, 경고장 답변기한 2026년 10월 5일"],
-  ["희망하는 결과","이번 상담을 통해 확인하거나 해결하고 싶은 결과를 적어주세요.","희망 결과 *","예: 출원 가능 여부와 예상 절차를 확인한 뒤 출원을 결정하고 싶습니다"],
-  ["추가 문의사항","앞에서 작성하지 못한 내용이나 특별히 확인할 사항을 적어주세요.","추가 문의사항 *","비용, 소요기간, 해외출원, 분쟁 가능성 등 궁금한 사항을 적어주세요"],
+  null,
+  ["상담 문의 내용","궁금한 점과 원하는 도움을 자유롭게 적어주세요.","문의 내용 *","예: 등록 가능성, 예상 비용과 기간, 준비할 자료 등을 알고 싶습니다"],
+  ["참고자료 첨부","상담 내용을 이해하는 데 도움이 되는 자료가 있을 때만 선택적으로 첨부해주세요.","자료 설명","예: 관련 공문, 제품 사진, 계약서 중 문의할 부분"],
+  null,
+  null,
+  null,
   ["진행 여부 · 제출 동의","이미 출원·등록·공개·판매 또는 분쟁이 진행 중인지 알려주세요.",null,null]
 ];
 
 function configureWizardCopy(type){
   const consultation = type === "consultation";
+  setActiveSteps(type);
+  const sidebarTip = document.querySelector(".sidebar-note p");
+  if(sidebarTip) sidebarTip.textContent = consultation
+    ? "법률용어나 전문적인 문장으로 작성하지 않아도 됩니다. 현재 상황과 궁금한 점을 평소 설명하듯 적어주세요."
+    : "완벽한 특허 문장으로 쓰지 않아도 됩니다. 평소 설명하듯 적어주시면 됩니다.";
   consultationCategoryField?.classList.toggle("hidden", !consultation);
   if(consultationCategory) consultationCategory.required = consultation;
   const firstDesc=steps[0]?.querySelector(".step-desc");
@@ -167,6 +183,14 @@ function configureWizardCopy(type){
   if(disclosureLabel) disclosureLabel.textContent=consultation?"진행 내용 또는 추가 참고사항":"공개 내용 또는 참고사항";
   const uploadNotice=document.querySelector(".upload-email-notice");
   if(uploadNotice) uploadNotice.innerHTML=consultation?'용량을 초과하거나 지원하지 않는 형식의 자료는 <b><span id="supportEmailText">회사 상담 이메일 주소</span>로 별도 전송</b>해 주세요. 이메일 제목에는 신청자명과 상담 제목을 함께 적어주세요.':'용량을 초과하거나 위 형식 외의 자료는 <b><span id="supportEmailText">회사 상담 이메일 주소</span>로 별도 전송</b>해 주세요. 이메일 제목에는 신청자명과 발명의 명칭을 함께 적어주세요.';
+  const uploadStrong=steps[6]?.querySelector(".upload-placeholder > strong");
+  const uploadHelp=steps[6]?.querySelector(".upload-main-help");
+  const uploadBox=steps[6]?.querySelector(".upload-help-box");
+  if(consultation){
+    if(uploadStrong) uploadStrong.textContent="참고 이미지 · PDF 첨부 (선택)";
+    if(uploadHelp) uploadHelp.textContent="필요한 경우에만 JPG, PNG, PDF 파일을 최대 3개까지 첨부할 수 있습니다.";
+    if(uploadBox) uploadBox.innerHTML='<p><b>첨부는 필수가 아닙니다.</b> 상담에 참고할 공문, 제품 사진, 계약서 일부, 등록공보 등이 있을 때만 올려주세요.</p><p class="upload-email-notice">한글·워드 등 다른 형식은 상담 접수 후 안내받은 이메일로 보내실 수 있습니다.</p>';
+  }
 }
 
 function showView(view) {
@@ -195,15 +219,19 @@ function startWizard(type = "precheck") {
 }
 
 function renderStep() {
-  steps.forEach((step, idx) => step.classList.toggle("active", idx === currentStep));
+  const section = activeSteps[currentStep];
+  steps.forEach(step => step.classList.toggle("active", step === section));
 
-  const isReview = currentStep === steps.length - 1;
-  const title = steps[currentStep].querySelector("h3")?.textContent || "접수";
-  const displayStep = Math.min(currentStep + 1, 11);
+  const isReview = currentStep === activeSteps.length - 1;
+  const title = section.querySelector("h3")?.textContent || "접수";
+  const displayStep = currentStep + 1;
+  const inputStepCount = activeSteps.length - 1;
 
-  stepLabel.textContent = isReview ? "REVIEW" : `STEP ${String(displayStep).padStart(2, "0")} / 11`;
+  stepLabel.textContent = isReview ? "REVIEW" : `STEP ${String(displayStep).padStart(2, "0")} / ${String(inputStepCount).padStart(2, "0")}`;
+  const sheetLabel = section.querySelector(".sheet-label");
+  if(sheetLabel && !isReview) sheetLabel.textContent = `STEP ${String(displayStep).padStart(2, "0")}${section === steps[6] ? " · 선택" : ""}`;
   stepTitleTop.textContent = title;
-  progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
+  progressBar.style.width = `${((currentStep + 1) / activeSteps.length) * 100}%`;
 
   prevBtn.style.visibility = currentStep === 0 ? "hidden" : "visible";
   nextBtn.classList.toggle("hidden", isReview);
@@ -213,7 +241,7 @@ function renderStep() {
 }
 
 function validateCurrentStep() {
-  const section = steps[currentStep];
+  const section = activeSteps[currentStep];
   const required = [...section.querySelectorAll("[required]")];
 
   for (const el of required) {
@@ -402,9 +430,8 @@ const labels = {
 
 const consultationLabels = {
   name:"성함 / 담당자명",company:"회사명 · 소속",phone:"연락처",email:"이메일",consultationCategory:"상담 분야",
-  inventionTitle:"상담 제목",technicalField:"상담 대상 및 분야",existingProblem:"현재 상황과 고민",objective:"원하는 도움",
-  implementation:"구체적인 문의 내용",drawingDescription:"첨부자료 설명",results:"일정 및 기한",effects:"희망 결과",
-  differentiation:"추가 문의사항",disclosed:"현재 진행 여부",disclosureNote:"진행 내용 / 참고사항"
+  inventionTitle:"상담 제목",existingProblem:"현재 상황과 고민",implementation:"문의 내용",
+  drawingDescription:"참고자료 설명",disclosed:"관련 절차 진행 여부",disclosureNote:"진행 내용 / 참고사항"
 };
 
 function buildReview() {
@@ -425,7 +452,7 @@ function buildReview() {
 nextBtn.addEventListener("click", () => {
   if (!validateCurrentStep()) return;
   saveDraft();
-  currentStep = Math.min(currentStep + 1, steps.length - 1);
+  currentStep = Math.min(currentStep + 1, activeSteps.length - 1);
   renderStep();
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
@@ -466,7 +493,7 @@ form.addEventListener("submit", async (e) => {
   const fileProblem = validateSelectedFiles(selectedFiles);
   if (fileProblem) {
     alert(fileProblem);
-    currentStep = Math.min(6, steps.length - 1);
+    currentStep = serviceType === "consultation" ? 4 : Math.min(6, activeSteps.length - 1);
     renderStep();
     return;
   }

@@ -414,15 +414,11 @@ async function openDetail(receiptNo) {
 
     const inventionItems = consultation ? [
       {label:"상담 제목",value:d.inventionTitle,wide:true,featured:true},
-      {label:"상담 대상 및 분야",value:consultationField(d.technicalField)},
+      {label:"상담 분야",value:consultationCategory(d.technicalField) || consultationField(d.technicalField)},
       {label:"현재 상황과 고민",value:d.existingProblem},
-      {label:"상담을 통해 원하는 도움",value:d.objective},
-      {label:"구체적인 문의 내용",value:d.implementation,wide:true},
-      {label:"첨부자료 설명",value:d.drawingDescription},
-      {label:"일정 또는 기한",value:d.results},
-      {label:"희망하는 결과",value:d.effects},
-      {label:"추가 문의사항",value:d.differentiation,wide:true,featured:true},
-      {label:"현재 진행 여부",value:d.disclosed},
+      {label:"문의 내용",value:d.implementation,wide:true,featured:true},
+      {label:"참고자료 설명",value:d.drawingDescription},
+      {label:"관련 절차 진행 여부",value:d.disclosed},
       {label:"진행내용 및 참고사항",value:d.disclosureNote,wide:true},
       {label:"첨부파일",value:d.attachmentInfo,attachments:d.attachments || [],wide:true}
     ] : [
