@@ -492,16 +492,23 @@ input:focus, textarea:focus { border-bottom-color: var(--gold); }
 
 .file-error{color:#a94534!important;font-weight:700}
 
-/* V20: 접수화면 특허 설계도 배경 */
-.wizard-view{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(circle at 18% 42%,rgba(28,79,113,.55),transparent 34%),linear-gradient(135deg,#061b2d 0%,#0a304e 52%,#071d31 100%)}
-.wizard-view:before{content:"";position:absolute;z-index:-1;left:max(-170px,calc(50% - 880px));top:50%;width:760px;height:760px;background:url("assets/intake-patent-blueprint.svg") center/contain no-repeat;opacity:.16;transform:translateY(-48%) rotate(-3deg);filter:drop-shadow(0 18px 40px rgba(0,0,0,.22));pointer-events:none}
-.wizard-view:after{content:"PATENT  ·  DESIGN  ·  TRADEMARK";position:absolute;z-index:-1;right:-45px;bottom:38px;color:rgba(210,177,111,.1);font:600 12px/1 Georgia,serif;letter-spacing:.42em;transform:rotate(-90deg);transform-origin:right bottom;pointer-events:none}
-.wizard-view[data-service="consultation"]:before{opacity:.12;transform:translateY(-48%) rotate(2deg) scale(.94)}
+/* V21: 접수화면 전용 발명 스튜디오 이미지 */
+.wizard-view{position:relative;isolation:isolate;overflow:hidden;background:#061a2c}
+.wizard-view:before{content:"";position:absolute;z-index:-2;inset:0;background:url("assets/intake-invention-studio-v2.png") left center/cover no-repeat;opacity:.68;transform:none;filter:none;pointer-events:none}
+.wizard-view:after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,rgba(3,18,31,.2) 0%,rgba(3,18,31,.55) 35%,rgba(3,18,31,.94) 64%,#061a2c 100%),linear-gradient(0deg,rgba(3,18,31,.72),transparent 50%);pointer-events:none}
+.wizard-view[data-service="consultation"]:before{opacity:.62;transform:none}
 .wizard-sidebar{position:relative;z-index:1;text-shadow:0 2px 18px rgba(0,0,0,.25)}
-.sidebar-note{backdrop-filter:blur(5px);background:rgba(5,29,48,.44)}
-.wizard-main{position:relative;z-index:2;box-shadow:0 28px 70px rgba(0,0,0,.28)}
-@media(max-width:900px){.wizard-view:before{left:-220px;top:310px;width:620px;height:620px;opacity:.1}}
-@media(max-width:640px){.wizard-view:before{left:-260px;top:250px;width:560px;height:560px;opacity:.08}.wizard-view:after{display:none}}
+.sidebar-note{backdrop-filter:blur(8px);background:rgba(5,29,48,.7);border-color:rgba(216,183,119,.28)}
+.wizard-main{position:relative;z-index:2;box-shadow:0 30px 80px rgba(0,0,0,.42)}
+
+/* 입력 위치를 명확하게 보이게 하는 테두리형 입력상자 */
+.wizard-main input[type="text"],.wizard-main input[type="tel"],.wizard-main input[type="email"],.wizard-main textarea,.wizard-main select{border:1px solid #d2cabd;border-radius:7px;background:#fffdf8;padding:14px 15px;box-shadow:inset 0 1px 2px rgba(18,35,49,.025);transition:border-color .2s,box-shadow .2s,background .2s}
+.wizard-main textarea{min-height:170px;line-height:1.75}
+.wizard-main input:focus,.wizard-main textarea:focus,.wizard-main select:focus{border-color:#b79255;background:#fff;box-shadow:0 0 0 3px rgba(183,146,85,.14);outline:0}
+.wizard-main .phone-input-group input{text-align:center}
+.wizard-main ::placeholder{color:#a1a8ae}
+@media(max-width:900px){.wizard-view:before{background-position:28% center;opacity:.32}.wizard-view:after{background:rgba(3,18,31,.82)}}
+@media(max-width:640px){.wizard-view:before{background-position:24% center;opacity:.22}.wizard-main textarea{min-height:145px}}
 
 
 /* V9 contact & upload */
