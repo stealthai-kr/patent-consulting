@@ -26,6 +26,7 @@ const pages={
  resources:{g:"center",title:"자료실",lead:"출원 준비와 지식재산권 관리에 도움이 되는 기본자료를 제공합니다.",s:[["출원 준비 체크리스트",["발명의 문제점·구성·효과·차별점 정리","공개·판매·발표 여부 확인","도면·사진·시험자료 준비"]],["권리관리 체크리스트",["심사기한과 의견서 제출기한 확인","등록료·연차료 납부일 관리","상표 갱신과 실제 사용자료 보관"]]]}
 };
 Object.assign(pages,window.additionalPages||{});
+Object.entries(window.pageEnhancements||{}).forEach(([pageKey,sections])=>{if(pages[pageKey])pages[pageKey].s.push(...sections)});
 pages.patent.s.unshift(["출원과 등록은 어떻게 다른가요?",["출원은 보호받고 싶은 발명의 내용을 서류로 작성해 특허청에 제출하고 출원일을 확보하는 절차입니다. 출원번호를 받았다고 곧바로 독점권이 생기는 것은 아니며, 심사청구와 실체심사를 거쳐 등록결정을 받아야 합니다.","등록은 심사를 통과한 뒤 등록료를 납부해 특허권이 설정된 상태를 말합니다. 출원 중에는 ‘특허출원 중’, 권리가 설정된 뒤에는 ‘특허등록’으로 구분하여 표시하는 것이 정확합니다."]]);
 pages.process.s.unshift(["전체 흐름 한눈에 보기",["상담·자료접수 → 권리관계 확인 → 선행기술조사 → 출원전략 협의 → 명세서·도면 작성 → 특허청 출원 및 심사청구 → 실체심사와 의견서 대응 → 등록료 납부 및 권리관리 순서로 진행됩니다.","사건마다 기술의 완성도, 공개 일정과 심사 결과가 달라 실제 소요기간과 대응 횟수는 달라질 수 있습니다. 각 단계가 시작될 때 필요한 결정, 자료와 예상비용을 별도로 안내합니다."]]);
 const key=new URLSearchParams(location.search).get("page")||"greeting";const page=pages[key]||pages.greeting;const group=groups[page.g];

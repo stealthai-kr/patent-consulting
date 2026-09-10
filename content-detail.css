@@ -26,6 +26,16 @@
   color: #173a58;
 }
 
+.content-block:nth-of-type(even) {
+  margin-right: -22px;
+  margin-left: -22px;
+  padding-right: 22px;
+  padding-left: 22px;
+  background: linear-gradient(90deg, rgba(247, 243, 235, .72), rgba(247, 243, 235, 0));
+}
+
+.content-block li { padding-bottom: 4px; }
+
 @media (max-width: 600px) {
   .step-block { padding-left: 18px; }
 }
